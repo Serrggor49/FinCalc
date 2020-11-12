@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 //                new DataPoint(10, 6)
 //        });
 
-
+//
         //graph.setTitleColor(R.color.green);
         //graph.setTitle("график сложного процента");
         graph.setCursorMode(true);
