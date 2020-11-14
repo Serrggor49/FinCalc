@@ -21,8 +21,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    double A; // результат инвестирования под сложный процент
+    Double A; // результат инвестирования под сложный процент
     double A_2; // результат инвестирования под простой процент
+    double prft; // сумма в результате инвестирования под сложный процент минус первоначальный взнос
     double P; // первоначальный взнос
     double r; // годовая процентная ставка
     double t; // срок, лет
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     EditText stavkaProcentnaya;
     EditText srok;
     EditText kolichestvo_nachisleniy;
+    TextView profit;
     TextView result;
 
     LineGraphSeries<DataPoint> graf_1;
@@ -44,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button button = findViewById(R.id.button_id);
+
+
     }
 
 
@@ -54,14 +58,24 @@ public class MainActivity extends AppCompatActivity {
         srok = findViewById(R.id.srok_editText_id);
         kolichestvo_nachisleniy = findViewById(R.id.kolichestvo_nachisleniy_editText_id);
         result = findViewById(R.id.result_editText_id);
+        profit = findViewById(R.id.profit_editText_id);
 
 
-        P = Double.parseDouble(vznosPervonachalniy.getText().toString());
+        String vznos = vznosPervonachalniy.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
+        P = Double.parseDouble(vznos);
         r = Double.parseDouble(stavkaProcentnaya.getText().toString()) / 100;
         t = Double.parseDouble(srok.getText().toString());
         n = Double.parseDouble(kolichestvo_nachisleniy.getText().toString());
 
         calculate();
+
+        StringBuilder s = new StringBuilder(vznosPervonachalniy.getText().toString().replace(" ", "")); // добавляем пробелы в значение первоначального взноса для улучшения читабельности
+        for(int i = s.length(); i > 0; i = i-3){
+            s.insert(i, " ");
+        }
+
+        //vznosPervonachalniy.setText(s.toString());
+        vznosPervonachalniy.setText(separate(vznosPervonachalniy.getText().toString()));
 
     }
 
@@ -69,7 +83,12 @@ public class MainActivity extends AppCompatActivity {
     void calculate(){  // в данном методе вычисляем значение сложного процента
 
         A = (P * (Math.pow((1 + (r / n)), (n * t)))); // стоимость вклада по окончанию срока (сложный процент)
-        result.setText(String.format("%.2f", A));
+
+        //result.setText("Итоговая сумма " + String.format("%.2f", (A.toString())));
+        String result_v = String.format("%.2f",  A);
+        result.setText("Итоговая сумма " + separate(result_v));
+        String result_prft =  String.format("%.2f",  (A-P));
+        profit.setText("Заработано " + separate(result_prft));
 
 
         for (int i = 0; i <= t; i++) {  // тут расчитываем стоимость вклада с шагом в один год, для построения графика
@@ -83,8 +102,15 @@ public class MainActivity extends AppCompatActivity {
         setGraph();
         arrayListDataPoint.clear();
 
+    }
 
+    static String separate(String str){ // подаем на вход строку и добавляем в нее пробелы  для улучшения читабельности (было - 3000000, стало 3 000 000)
 
+        StringBuilder s = new StringBuilder(str.replace(" ", ""));
+        for(int i = s.length(); i > 0; i = i-3){
+            s.insert(i, " ");
+        }
+        return  s.toString().trim();
     }
 
 
@@ -132,10 +158,11 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        graf_2.setColor(Color.RED);
         graph.addSeries(graf_2);
 
 
-        Toast.makeText(this, "результат " + A_2, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "результат " + A_2, Toast.LENGTH_LONG).show();
 
     }
 

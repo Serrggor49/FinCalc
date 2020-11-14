@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_1"
+    android:background="#00E9E9E9"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -22,12 +22,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:text="300000" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Первоначальный взнос (P)" />
+                android:text="Первоначальный взнос (Р, руб)" />
 
         </LinearLayout>
 
@@ -41,12 +42,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:text="10" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Процентная ставка (r)" />
+                android:text="Процентная ставка (r, %)" />
 
         </LinearLayout>
 
@@ -60,12 +62,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:text="15" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Срок вклада (t)" />
+                android:text="Срок вклада (t, лет)" />
 
         </LinearLayout>
 
@@ -79,7 +82,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:text="12" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,7 +96,21 @@
             android:id="@+id/graph"
             android:layout_width="wrap_content"
             android:layout_height="200dip"
-            android:layout_margin="10dp" />
+            android:layout_margin="4dp" />
+
+        <TextView
+            android:id="@+id/result_editText_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FA070000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/profit_editText_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FA070000"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/button_id"
@@ -100,12 +118,6 @@
             android:layout_height="wrap_content"
             android:onClick="getData"
             android:text="Button" />
-
-        <TextView
-            android:id="@+id/result_editText_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
 
     </LinearLayout>
 
