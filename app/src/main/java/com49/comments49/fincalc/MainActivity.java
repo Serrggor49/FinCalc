@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         init();
         Button button = findViewById(R.id.button_id);
-
+        setDesignGraf();
 
     }
 
@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
             arrayListDataPoint.add(new DataPoint(i, A));
         }
 
-        graf_1 = new LineGraphSeries<>(arrayListDataPoint.toArray(new DataPoint[0]));
 
         A_2 = P*(1+t*r);
         setGraph();
@@ -131,15 +130,9 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
-
-        graf_1.setColor(getResources().getColor(R.color.green_graf, null));  // цвет графика
-
-        graph.getGridLabelRenderer().setGridColor(Color.GRAY); // цвет сетки графика
-        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE); // цвет текста по оси Y
-        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE); // цвет текста по оси Y
+        setDesignGraf();
 
 
-        graph.setCursorMode(true);
         graph.getViewport().setMinX(0); // минимальное значение графика по оси X
         graph.getViewport().setMaxX(t); // максимальное значение графика по оси X
 
@@ -169,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void init(){
         graph = findViewById(R.id.graph);
-
         vznosPervonachalniy = findViewById(R.id.vznos_pervonachalniy_editText_id);
         stavkaProcentnaya = findViewById(R.id.stavka_procentnaya_editText_id);
         srok = findViewById(R.id.srok_editText_id);
@@ -178,8 +170,14 @@ public class MainActivity extends AppCompatActivity {
         profit = findViewById(R.id.profit_editText_id);
     }
 
-    static void setDesignGraf(){
+    public void setDesignGraf(){
+        graf_1 = new LineGraphSeries<>(arrayListDataPoint.toArray(new DataPoint[0]));
 
+        graf_1.setColor(getResources().getColor(R.color.green_graf, null));  // цвет графика
+        graph.getGridLabelRenderer().setGridColor(Color.GRAY); // цвет сетки графика
+        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE); // цвет текста по оси Y
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE); // цвет текста по оси Y
+        graph.setCursorMode(true);
     }
 
 
