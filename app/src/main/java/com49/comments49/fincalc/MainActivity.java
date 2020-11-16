@@ -19,6 +19,10 @@ import java.lang.reflect.Array;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+
+
+// https://github.com/jjoe64/GraphView-Demos/blob/master/app/src/main/java/com/jjoe64/graphview_demos/examples/StylingColors.java описание либы по построению графиков
+
 public class MainActivity extends AppCompatActivity {
 
     Double A; // результат инвестирования под сложный процент
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     EditText kolichestvo_nachisleniy;
     TextView profit;
     TextView result;
+    GraphView graph;
 
     LineGraphSeries<DataPoint> graf_1;
     LineGraphSeries<DataPoint> graf_2;
@@ -45,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        init();
         Button button = findViewById(R.id.button_id);
 
 
@@ -53,12 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void getData(View view) { //получаем значение полей и вычисляем результат
 
-        vznosPervonachalniy = findViewById(R.id.vznos_pervonachalniy_editText_id);
-        stavkaProcentnaya = findViewById(R.id.stavka_procentnaya_editText_id);
-        srok = findViewById(R.id.srok_editText_id);
-        kolichestvo_nachisleniy = findViewById(R.id.kolichestvo_nachisleniy_editText_id);
-        result = findViewById(R.id.result_editText_id);
-        profit = findViewById(R.id.profit_editText_id);
+
 
 
         String vznos = vznosPervonachalniy.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
@@ -115,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     void setGraph() {
-        GraphView graph = findViewById(R.id.graph);
 
 //        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{  // пример заполнения
 //                new DataPoint(0, 1),
@@ -130,12 +130,16 @@ public class MainActivity extends AppCompatActivity {
 //                new DataPoint(10, 6)
 //        });
 
-//
-        //graph.setTitleColor(R.color.green);
-        //graph.setTitle("график сложного процента");
+
+
+        graf_1.setColor(getResources().getColor(R.color.green_graf, null));  // цвет графика
+
+        graph.getGridLabelRenderer().setGridColor(Color.GRAY); // цвет сетки графика
+        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE); // цвет текста по оси Y
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE); // цвет текста по оси Y
+
+
         graph.setCursorMode(true);
-
-
         graph.getViewport().setMinX(0); // минимальное значение графика по оси X
         graph.getViewport().setMaxX(t); // максимальное значение графика по оси X
 
@@ -149,20 +153,32 @@ public class MainActivity extends AppCompatActivity {
         graph.addSeries(graf_1);
 
 
-
-
-
-        graf_2 = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, P),
-                new DataPoint(t, A_2),
-
-        });
-
-        graf_2.setColor(Color.RED);
-        graph.addSeries(graf_2);
+//        graf_2 = new LineGraphSeries<>(new DataPoint[] {
+//                new DataPoint(0, P),
+//                new DataPoint(t, A_2),
+//
+//        });
+//        graf_2.setColor(Color.RED);
+//        graph.addSeries(graf_2);
 
 
         //Toast.makeText(this, "результат " + A_2, Toast.LENGTH_LONG).show();
+
+    }
+
+
+    public void init(){
+        graph = findViewById(R.id.graph);
+
+        vznosPervonachalniy = findViewById(R.id.vznos_pervonachalniy_editText_id);
+        stavkaProcentnaya = findViewById(R.id.stavka_procentnaya_editText_id);
+        srok = findViewById(R.id.srok_editText_id);
+        kolichestvo_nachisleniy = findViewById(R.id.kolichestvo_nachisleniy_editText_id);
+        result = findViewById(R.id.result_editText_id);
+        profit = findViewById(R.id.profit_editText_id);
+    }
+
+    static void setDesignGraf(){
 
     }
 

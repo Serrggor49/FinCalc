@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00E9E9E9"
+    android:background="#2E2C2C"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -15,80 +15,98 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
 
             <EditText
                 android:id="@+id/vznos_pervonachalniy_editText_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#327E36"
                 android:ems="10"
                 android:inputType="numberDecimal"
-                android:text="300000" />
+                android:text="300000"
+                android:textColor="#327E36" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Первоначальный взнос (Р, руб)" />
+                android:text="Первоначальный взнос (Р, руб)"
+                android:textColor="#A2A1A1" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
 
             <EditText
                 android:id="@+id/stavka_procentnaya_editText_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#327E36"
                 android:ems="10"
                 android:inputType="numberDecimal"
-                android:text="10" />
+                android:text="10"
+                android:textColor="#327E36"
+                android:textColorLink="#5C6A9C"
+                android:textCursorDrawable="@color/colorPrimaryDark" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Процентная ставка (r, %)" />
+                android:text="Процентная ставка (r, %)"
+                android:textColor="#B1B0B0" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
 
             <EditText
                 android:id="@+id/srok_editText_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#327E36"
                 android:ems="10"
                 android:inputType="numberDecimal"
-                android:text="15" />
+                android:text="15"
+                android:textColor="#327E36" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Срок вклада (t, лет)" />
+                android:text="Срок вклада (t, лет)"
+                android:textColor="#B1B0B0" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="25dp">
 
             <EditText
                 android:id="@+id/kolichestvo_nachisleniy_editText_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#327E36"
                 android:ems="10"
                 android:inputType="numberDecimal"
-                android:text="12" />
+                android:text="12"
+                android:textColor="#327E36" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Количество начисленных процентов в год (n)" />
+                android:text="Количество начисленных процентов в год (n)"
+                android:textColor="#B1B0B0" />
 
         </LinearLayout>
 
@@ -102,20 +120,24 @@
             android:id="@+id/result_editText_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FA070000"
+            android:layout_marginLeft="15dp"
+            android:textColor="#327E36"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/profit_editText_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FA070000"
+            android:layout_marginLeft="15dp"
+            android:textColor="#327E36"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/button_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:onClick="getData"
             android:text="Button" />
 
