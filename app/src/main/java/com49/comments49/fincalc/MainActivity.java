@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         String result_v = String.format("%.2f",  A);
         result.setText("Итоговая сумма " + separate(result_v));
         String result_prft =  String.format("%.2f",  (A-P));
-        profit.setText("Заработано " + separate(result_prft));
+        profit.setText("Прибыль " + separate(result_prft));
 
 
         for (int i = 0; i <= t; i++) {  // тут расчитываем стоимость вклада с шагом в один год, для построения графика
