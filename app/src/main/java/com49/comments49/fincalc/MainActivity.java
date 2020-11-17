@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void setDesignGraf(){
+
+
         graf_1 = new LineGraphSeries<>(arrayListDataPoint.toArray(new DataPoint[0]));
         graf_1.setColor(getResources().getColor(R.color.green_graf, null));  // цвет графика
         graph.getGridLabelRenderer().setGridColor(Color.GRAY); // цвет сетки графика
@@ -113,10 +117,15 @@ public class MainActivity extends AppCompatActivity {
             A = (P * (Math.pow((1 + (r / n)), (n * i))));
             arrayListDataPoint.add(new DataPoint(i, A));
         }
-        
+
         A_2 = P*(1+t*r);
         setGraph();
         arrayListDataPoint.clear();
+
+//        LinearLayout linearLayout = findViewById(R.id.linear_g);  // задать ширину
+//        ViewGroup.LayoutParams param = graph.getLayoutParams();
+//        param.width = linearLayout.getWidth()+500;
+//        graph.setLayoutParams(param);
 
     }
 

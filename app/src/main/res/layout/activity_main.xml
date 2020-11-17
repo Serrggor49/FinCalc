@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linear_g"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -18,47 +19,45 @@
             android:orientation="vertical"
             android:paddingBottom="10dp">
 
-            <EditText
-                android:id="@+id/vznos_pervonachalniy_editText_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#3EA543"
-                android:ems="10"
-                android:inputType="numberDecimal"
-                android:text="300000"
-                android:textColor="#327E36" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Первоначальный взнос (Р, руб)"
-                android:textColor="#A2A1A1" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="false"
+                    android:padding="18dp"
+                    app:srcCompat="@drawable/ic_money_bag" />
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="10dp">
+                    <EditText
+                        android:id="@+id/vznos_pervonachalniy_editText_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#3EA543"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        android:text="300000"
+                        android:textColor="#327E36" />
 
-            <EditText
-                android:id="@+id/stavka_procentnaya_editText_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#3EA543"
-                android:ems="10"
-                android:inputType="numberDecimal"
-                android:text="10"
-                android:textColor="#327E36"
-                android:textColorLink="#5C6A9C"
-                android:textCursorDrawable="@color/colorPrimaryDark" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Первоначальный взнос (Р, руб)"
+                        android:textColor="#A2A1A1" />
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Процентная ставка (r, %)"
-                android:textColor="#B1B0B0" />
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -68,21 +67,92 @@
             android:orientation="vertical"
             android:paddingBottom="10dp">
 
-            <EditText
-                android:id="@+id/srok_editText_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#3EA543"
-                android:ems="10"
-                android:inputType="numberDecimal"
-                android:text="15"
-                android:textColor="#327E36" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Срок вклада (t, лет)"
-                android:textColor="#B1B0B0" />
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:adjustViewBounds="true"
+                    android:padding="22dp"
+                    app:srcCompat="@drawable/ic_percent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/stavka_procentnaya_editText_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#3EA543"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        android:text="10"
+                        android:textColor="#327E36"
+                        android:textColorLink="#5C6A9C"
+                        android:textCursorDrawable="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Процентная ставка (r, %)"
+                        android:textColor="#B1B0B0" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:adjustViewBounds="true"
+                    android:padding="22dp"
+                    app:srcCompat="@drawable/ic_sand_clock" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/srok_editText_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#3EA543"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        android:text="15"
+                        android:textColor="#327E36" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Срок вклада (t, лет)"
+                        android:textColor="#B1B0B0" />
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -92,21 +162,45 @@
             android:orientation="vertical"
             android:paddingBottom="25dp">
 
-            <EditText
-                android:id="@+id/kolichestvo_nachisleniy_editText_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#3EA543"
-                android:ems="10"
-                android:inputType="numberDecimal"
-                android:text="12"
-                android:textColor="#327E36" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Количество начисленных процентов в год (n)"
-                android:textColor="#B1B0B0" />
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:adjustViewBounds="true"
+                    android:padding="22dp"
+                    app:srcCompat="@drawable/ic_calendar" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/kolichestvo_nachisleniy_editText_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#3EA543"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        android:text="12"
+                        android:textColor="#327E36" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Количество начисленных процентов в год (n)"
+                        android:textColor="#B1B0B0" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
