@@ -22,7 +22,7 @@
                 android:id="@+id/vznos_pervonachalniy_editText_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#327E36"
+                android:backgroundTint="#3EA543"
                 android:ems="10"
                 android:inputType="numberDecimal"
                 android:text="300000"
@@ -46,7 +46,7 @@
                 android:id="@+id/stavka_procentnaya_editText_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#327E36"
+                android:backgroundTint="#3EA543"
                 android:ems="10"
                 android:inputType="numberDecimal"
                 android:text="10"
@@ -72,7 +72,7 @@
                 android:id="@+id/srok_editText_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#327E36"
+                android:backgroundTint="#3EA543"
                 android:ems="10"
                 android:inputType="numberDecimal"
                 android:text="15"
@@ -96,7 +96,7 @@
                 android:id="@+id/kolichestvo_nachisleniy_editText_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#327E36"
+                android:backgroundTint="#3EA543"
                 android:ems="10"
                 android:inputType="numberDecimal"
                 android:text="12"
@@ -112,7 +112,7 @@
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="200dip"
             android:layout_margin="3dp" />
 
