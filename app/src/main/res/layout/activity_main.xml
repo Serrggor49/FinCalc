@@ -195,7 +195,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Количество начисленных процентов в год "
+                        android:text="Интервал начислений"
                         android:textColor="#B1B0B0" />
 
                 </LinearLayout>
@@ -208,7 +208,7 @@
             android:id="@+id/graph"
             android:layout_width="match_parent"
             android:layout_height="200dip"
-            android:layout_margin="4dp" />
+            android:layout_margin="3dp" />
 
         <TextView
             android:id="@+id/result_editText_id"
@@ -228,7 +228,8 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/button_id"
@@ -240,7 +241,7 @@
             android:background="#585454"
             android:onClick="getData"
             android:text="Рассчитать"
-            android:textColor="#D3D1D1" />
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 

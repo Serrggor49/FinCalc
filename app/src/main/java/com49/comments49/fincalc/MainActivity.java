@@ -2,8 +2,12 @@ package com49.comments49.fincalc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -47,6 +51,29 @@ public class MainActivity extends AppCompatActivity {
     LineGraphSeries<DataPoint> graf_1;  //
     LineGraphSeries<DataPoint> graf_2;
     GraphView graph;  // график
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.que_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+
+        Intent intent = new Intent(this, Info.class);
+        startActivity(intent);
+//        switch (item.getItemId()) {
+//            case R.id.que:
+//                addSomething();
+//                return true;
+//
+//        }
+        return false;
+    }
 
 
 
@@ -110,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         String result_v = String.format("%.2f",  A);
         result.setText("Итоговая сумма " + separate(result_v));
         String result_prft =  String.format("%.2f",  (A-P));
-        profit.setText("Прибыль " + separate(result_prft));
+       // profit.setText("Прибыль               " + separate(result_prft));
 
 
         for (int i = 0; i <= t; i++) {  // тут расчитываем стоимость вклада с шагом в один год, для построения графика
