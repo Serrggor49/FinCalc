@@ -8,240 +8,112 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/linear_g"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
         android:orientation="vertical">
 
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="10dp">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/imageButton467"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#111111"
+                android:onClick="startSlojniyProcent"
+                android:padding="25dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/percent" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:adjustViewBounds="true"
-                    android:cropToPadding="false"
-                    android:padding="18dp"
-                    app:srcCompat="@drawable/ic_money_bag" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/vznos_pervonachalniy_editText_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#FF14CA1D"
-                        android:ems="10"
-                        android:inputType="numberDecimal"
-                        android:text="300000"
-                        android:textColor="#FF14CA1D" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Первоначальный взнос"
-                        android:textColor="#A2A1A1" />
-                </LinearLayout>
-
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#111111"
+                android:onClick="startSlojniyProcent"
+                android:padding="25dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/percent" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="10dp">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/imageButton3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#111111"
+                android:onClick="startSlojniyProcent"
+                android:padding="25dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/percent" />
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:adjustViewBounds="true"
-                    android:padding="22dp"
-                    app:srcCompat="@drawable/ic_percent" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/stavka_procentnaya_editText_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#FF14CA1D"
-                        android:ems="10"
-                        android:inputType="numberDecimal"
-                        android:text="10"
-                        android:textColor="#FF14CA1D"
-                        android:textColorLink="#5C6A9C"
-                        android:textCursorDrawable="@color/colorPrimaryDark" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Процентная ставка (%)"
-                        android:textColor="#B1B0B0" />
-                </LinearLayout>
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#111111"
+                android:onClick="startSlojniyProcent"
+                android:padding="25dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/percent" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="10dp">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/imageButton4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#111111"
+                android:onClick="startSlojniyProcent"
+                android:padding="25dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/percent" />
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:adjustViewBounds="true"
-                    android:padding="22dp"
-                    app:srcCompat="@drawable/ic_sand_clock" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/srok_editText_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#FF14CA1D"
-                        android:ems="10"
-                        android:inputType="numberDecimal"
-                        android:text="15"
-                        android:textColor="#FF14CA1D" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Срок вклада "
-                        android:textColor="#B1B0B0" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="25dp">
-
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/imageButton5"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:adjustViewBounds="true"
-                    android:padding="22dp"
-                    app:srcCompat="@drawable/ic_calendar" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/kolichestvo_nachisleniy_editText_id"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="#FF14CA1D"
-                        android:ems="10"
-                        android:inputType="numberDecimal"
-                        android:text="12"
-                        android:textColor="#FF14CA1D" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Интервал начислений"
-                        android:textColor="#B1B0B0" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#111111"
+                android:onClick="startSlojniyProcent"
+                android:padding="25dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/percent" />
         </LinearLayout>
-
-        <com.jjoe64.graphview.GraphView
-            android:id="@+id/graph"
-            android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:layout_margin="3dp" />
-
-        <TextView
-            android:id="@+id/result_editText_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/profit_editText_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:visibility="gone" />
-
-        <Button
-            android:id="@+id/button_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
-            android:background="#585454"
-            android:onClick="getData"
-            android:text="Рассчитать"
-            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 
