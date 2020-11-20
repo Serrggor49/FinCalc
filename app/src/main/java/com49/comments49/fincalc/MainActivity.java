@@ -70,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startIpoteka(View v){
+        Intent intent = new Intent(MainActivity.this, Ipoteka.class);
+        startActivity(intent);
+    }
 
 
 
