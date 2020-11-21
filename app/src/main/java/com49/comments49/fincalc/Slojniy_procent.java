@@ -18,6 +18,8 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 
+import static com49.comments49.fincalc.Methods.separate;
+
 public class Slojniy_procent extends AppCompatActivity {
 
     Double A; // результат инвестирования под сложный процент
@@ -55,16 +57,8 @@ public class Slojniy_procent extends AppCompatActivity {
 
         Intent intent = new Intent(this, Info.class);
         startActivity(intent);
-//        switch (item.getItemId()) {
-//            case R.id.que:
-//                addSomething();
-//                return true;
-//
-//        }
         return false;
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +109,7 @@ public class Slojniy_procent extends AppCompatActivity {
         }
 
         //vznosPervonachalniy.setText(s.toString());
-        vznosPervonachalniy.setText(separate(vznosPervonachalniy.getText().toString()));
+        vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
 
     }
 
@@ -124,7 +118,7 @@ public class Slojniy_procent extends AppCompatActivity {
 
         A = (P * (Math.pow((1 + (r / n)), (n * t)))); // стоимость вклада по окончанию срока (сложный процент)
         String result_v = String.format("%.2f",  A);
-        result.setText("Итоговая сумма " + separate(result_v));
+        result.setText("Итоговая сумма " + Methods.separate(result_v));
         String result_prft =  String.format("%.2f",  (A-P));
         // profit.setText("Прибыль               " + separate(result_prft));
 
@@ -145,14 +139,6 @@ public class Slojniy_procent extends AppCompatActivity {
 
     }
 
-    static String separate(String str){ // подаем на вход строку и добавляем в нее пробелы  для улучшения читабельности (было - 3000000, стало 3 000 000)
-
-        StringBuilder s = new StringBuilder(str.replace(" ", ""));
-        for(int i = s.length(); i > 0; i = i-3){
-            s.insert(i, " ");
-        }
-        return  s.toString().trim();
-    }
 
 
     void setGraph() {

@@ -46,13 +46,13 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/vznos_pervonachalniy_editText_id"
+                            android:id="@+id/stoimost_jilya_editText_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#FF14CA1D"
                             android:ems="10"
                             android:inputType="numberDecimal"
-                            android:text="300000"
+                            android:text="8000000"
                             android:textColor="#FF14CA1D" />
 
                         <TextView
@@ -93,13 +93,13 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/stavka_procentnaya_editText_id"
+                            android:id="@+id/vznos_pervonachalniy_editText_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#FF14CA1D"
                             android:ems="10"
                             android:inputType="numberDecimal"
-                            android:text="10"
+                            android:text="1600000"
                             android:textColor="#FF14CA1D"
                             android:textColorLink="#5C6A9C"
                             android:textCursorDrawable="@color/colorPrimaryDark" />
@@ -141,13 +141,13 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/srok_editText_id"
+                            android:id="@+id/stavka_procentnaya_editText_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#FF14CA1D"
                             android:ems="10"
                             android:inputType="numberDecimal"
-                            android:text="15"
+                            android:text="7.5"
                             android:textColor="#FF14CA1D" />
 
                         <TextView
@@ -188,13 +188,13 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/kolichestvo_nachisleniy_editText_id"
+                            android:id="@+id/srok_editText_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#FF14CA1D"
                             android:ems="10"
                             android:inputType="numberDecimal"
-                            android:text="12"
+                            android:text="20"
                             android:textColor="#FF14CA1D" />
 
                         <TextView
@@ -248,6 +248,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:background="#585454"
+                android:onClick="getData"
                 android:text="Рассчитать"
                 android:textColor="#FFFFFF" />
 

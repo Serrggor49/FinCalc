@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#111111"
+    android:background="#000000"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -27,7 +27,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:background="#111111"
+                android:background="#000000"
                 android:onClick="startSlojniyProcent"
                 android:padding="25dp"
                 android:scaleType="fitXY"
@@ -40,11 +40,11 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:background="#111111"
+                android:background="#000000"
                 android:onClick="startIpoteka"
                 android:padding="25dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/percent" />
+                android:src="@drawable/ipoteka" />
 
         </LinearLayout>
 
@@ -61,7 +61,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:background="#111111"
+                android:background="#000000"
                 android:onClick="startSlojniyProcent"
                 android:padding="25dp"
                 android:scaleType="fitXY"
@@ -74,7 +74,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:background="#111111"
+                android:background="#000000"
                 android:onClick="startSlojniyProcent"
                 android:padding="25dp"
                 android:scaleType="fitXY"
@@ -95,7 +95,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:background="#111111"
+                android:background="#000000"
                 android:onClick="startSlojniyProcent"
                 android:padding="25dp"
                 android:scaleType="fitXY"
@@ -108,7 +108,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:background="#111111"
+                android:background="#000000"
                 android:onClick="startSlojniyProcent"
                 android:padding="25dp"
                 android:scaleType="fitXY"
