@@ -62,10 +62,10 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="startSlojniyProcent"
+                android:onClick="startCredit"
                 android:padding="25dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/percent" />
+                android:src="@drawable/kredit" />
 
             <ImageButton
                 android:id="@+id/imageButton2"
@@ -75,7 +75,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="startSlojniyProcent"
+                android:onClick="startCredit"
                 android:padding="25dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/percent" />

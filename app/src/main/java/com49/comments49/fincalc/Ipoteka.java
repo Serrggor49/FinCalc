@@ -30,6 +30,8 @@ public class Ipoteka extends AppCompatActivity {
     double procentnayaStavka;
     double srok;
 
+    int stringHelp = R.string.help_ipoteka;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,6 +42,8 @@ public class Ipoteka extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        Info.setText(stringHelp);
         Intent intent = new Intent(this, Info.class);
         startActivity(intent);
         return false;
@@ -72,8 +76,8 @@ public class Ipoteka extends AppCompatActivity {
 
         stoimostJilya = Double.parseDouble(stoimost);
         pervonachalniyVznos = Double.parseDouble(vznos);
-        procentnayaStavka = Double.parseDouble(procentnayaStavkaEditText.getText().toString())/100/12;
-        srok = Double.parseDouble(srokEditText.getText().toString())*12;
+        procentnayaStavka = Double.parseDouble(procentnayaStavkaEditText.getText().toString()) / 100 / 12;
+        srok = Double.parseDouble(srokEditText.getText().toString()) * 12;
         calculate();
 
         stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
@@ -82,12 +86,11 @@ public class Ipoteka extends AppCompatActivity {
     }
 
 
-
     public void calculate() {
-        Double x = (stoimostJilya - pervonachalniyVznos) * (   (procentnayaStavka * (Math.pow((1+procentnayaStavka), srok))  / (Math.pow((1+procentnayaStavka), srok)-1)));  // ежемесячный платеж
-        resultEditText.setText("Ежемесячный платеж: " + Methods.separate(String.format("%.2f", x)));
-        resultVsegoViplat.setText("Всего выплат: " + Methods.separate(String.format("%.2f", x*srok)));
-        resultPereplata.setText("Переплата: " + Methods.separate(String.format("%.2f", x*srok-(stoimostJilya-pervonachalniyVznos))));
+        Double x = (stoimostJilya - pervonachalniyVznos) * ((procentnayaStavka * (Math.pow((1 + procentnayaStavka), srok)) / (Math.pow((1 + procentnayaStavka), srok) - 1)));  // ежемесячный платеж
+        resultEditText.setText(" " + Methods.separate(String.format("%.2f", x)));
+        resultVsegoViplat.setText(" " + Methods.separate(String.format("%.2f", x * srok)));
+        resultPereplata.setText(" " + Methods.separate(String.format("%.2f", x * srok - (stoimostJilya - pervonachalniyVznos))));
     }
 
 

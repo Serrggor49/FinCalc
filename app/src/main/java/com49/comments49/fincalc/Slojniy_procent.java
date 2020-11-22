@@ -43,6 +43,7 @@ public class Slojniy_procent extends AppCompatActivity {
     LineGraphSeries<DataPoint> graf_1;  //
     LineGraphSeries<DataPoint> graf_2;
     GraphView graph;  // график
+    int stringHelp = R.string.help_slojniy_procent;
 
 
     @Override
@@ -54,8 +55,7 @@ public class Slojniy_procent extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-
+        Info.setText(stringHelp);
         Intent intent = new Intent(this, Info.class);
         startActivity(intent);
         return false;
@@ -120,7 +120,7 @@ public class Slojniy_procent extends AppCompatActivity {
 
         A = (P * (Math.pow((1 + (r / n)), (n * t)))); // стоимость вклада по окончанию срока (сложный процент)
         String result_v = String.format("%.2f",  A);
-        result.setText("Итоговая сумма " + Methods.separate(result_v));
+        result.setText(" " + Methods.separate(result_v));
         String result_prft =  String.format("%.2f",  (A-P));
         // profit.setText("Прибыль               " + separate(result_prft));
 

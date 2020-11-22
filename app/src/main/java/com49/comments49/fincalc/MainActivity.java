@@ -74,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startCredit(View v){
+        Intent intent = new Intent(MainActivity.this, Credit.class);
+        startActivity(intent);
+    }
+
 
 
 

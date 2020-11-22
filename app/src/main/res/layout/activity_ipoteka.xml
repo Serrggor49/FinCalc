@@ -209,36 +209,82 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/result_editText_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:text="Ежемесячный платеж: "
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
 
-
-            <TextView
-                android:id="@+id/result_vsego_viplat_editText_id"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:text="Всего выплат:"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/result_pereplat_editText_id"
+                <TextView
+                    android:id="@+id/result_editText_id_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Ежемесячный платеж: "
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/result_editText_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="#FF14CA1D"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:text="Переплата:"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/result_vsego_viplat_editText_id_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Всего выплат:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/result_vsego_viplat_editText_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:text=""
+                    android:textColor="#FF14CA1D"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/result_pereplat_editText_id_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Переплата:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/result_pereplat_editText_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="#FF14CA1D"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/button_id"
