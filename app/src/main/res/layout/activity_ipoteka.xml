@@ -37,7 +37,7 @@
                         android:adjustViewBounds="true"
                         android:cropToPadding="false"
                         android:padding="18dp"
-                        app:srcCompat="@drawable/ic_money_bag" />
+                        app:srcCompat="@drawable/ic_house" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                         android:layout_weight="5"
                         android:adjustViewBounds="true"
                         android:padding="22dp"
-                        app:srcCompat="@drawable/ic_percent" />
+                        app:srcCompat="@drawable/ic_money_bag" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -132,7 +132,7 @@
                         android:layout_weight="5"
                         android:adjustViewBounds="true"
                         android:padding="22dp"
-                        app:srcCompat="@drawable/ic_sand_clock" />
+                        app:srcCompat="@drawable/ic_percent" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -221,22 +221,22 @@
 
 
             <TextView
-                android:id="@+id/result_editText_id6"
+                android:id="@+id/result_vsego_viplat_editText_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
-                android:text="Всего выплат"
+                android:text="Всего выплат:"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/result_editText_id7"
+                android:id="@+id/result_pereplat_editText_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
-                android:text="Переплата"
+                android:text="Переплата:"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 

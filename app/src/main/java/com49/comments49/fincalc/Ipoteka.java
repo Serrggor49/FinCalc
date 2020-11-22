@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +22,8 @@ public class Ipoteka extends AppCompatActivity {
     EditText procentnayaStavkaEditText;  // поле ввода продолжительности вклада
     EditText srokEditText;   // поле ввода периодичности выплаты процентов за год
     TextView resultEditText;
+    TextView resultVsegoViplat;
+    TextView resultPereplata;
 
     double stoimostJilya;
     double pervonachalniyVznos;
@@ -45,10 +48,9 @@ public class Ipoteka extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Ипотечный калькулятор</font>"));
         setContentView(R.layout.activity_ipoteka);
-
         init();
-
     }
 
 
@@ -58,24 +60,34 @@ public class Ipoteka extends AppCompatActivity {
         procentnayaStavkaEditText = findViewById(R.id.stavka_procentnaya_editText_id);
         srokEditText = findViewById(R.id.srok_editText_id);
         resultEditText = findViewById(R.id.result_editText_id);
+        resultVsegoViplat = findViewById(R.id.result_vsego_viplat_editText_id);
+        resultPereplata = findViewById(R.id.result_pereplat_editText_id);
     }
 
 
     public void getData(View view) { //получаем значение полей и вычисляем результат
 
-        stoimostJilya = Double.parseDouble(stoimostJilyaEditText.getText().toString());
-        pervonachalniyVznos = Double.parseDouble(pervonachalniyVznosEditText.getText().toString());
+        String stoimost = stoimostJilyaEditText.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
+        String vznos = pervonachalniyVznosEditText.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
+
+        stoimostJilya = Double.parseDouble(stoimost);
+        pervonachalniyVznos = Double.parseDouble(vznos);
         procentnayaStavka = Double.parseDouble(procentnayaStavkaEditText.getText().toString())/100/12;
         srok = Double.parseDouble(srokEditText.getText().toString())*12;
         calculate();
+
+        stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
+        pervonachalniyVznosEditText.setText(Methods.separate(pervonachalniyVznosEditText.getText().toString()));
 
     }
 
 
 
     public void calculate() {
-        Double x = (stoimostJilya - pervonachalniyVznos) * (   (procentnayaStavka * (Math.pow((1+procentnayaStavka), srok))  / (Math.pow((1+procentnayaStavka), srok)-1)));
-        resultEditText.setText("Ежемесячный платеж: " + String.format("%.2f", x));
+        Double x = (stoimostJilya - pervonachalniyVznos) * (   (procentnayaStavka * (Math.pow((1+procentnayaStavka), srok))  / (Math.pow((1+procentnayaStavka), srok)-1)));  // ежемесячный платеж
+        resultEditText.setText("Ежемесячный платеж: " + Methods.separate(String.format("%.2f", x)));
+        resultVsegoViplat.setText("Всего выплат: " + Methods.separate(String.format("%.2f", x*srok)));
+        resultPereplata.setText("Переплата: " + Methods.separate(String.format("%.2f", x*srok-(stoimostJilya-pervonachalniyVznos))));
     }
 
 
