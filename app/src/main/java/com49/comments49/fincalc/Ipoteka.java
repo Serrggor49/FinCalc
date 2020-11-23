@@ -15,8 +15,6 @@ import android.widget.Toast;
 
 public class Ipoteka extends AppCompatActivity {
 
-    Double A; // результат инвестирования под сложный процент
-
     EditText stoimostJilyaEditText; // поле ввода первоначального вклада
     EditText pervonachalniyVznosEditText; // поле ввода процентной ставки
     EditText procentnayaStavkaEditText;  // поле ввода продолжительности вклада

@@ -46,7 +46,7 @@
                         android:orientation="vertical">
 
                         <EditText
-                            android:id="@+id/stoimost_jilya_editText_id"
+                            android:id="@+id/summa_credita_editText_id"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#FF14CA1D"
