@@ -37,9 +37,19 @@ public class Credit extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        Info.setText(stringHelp);
-        Intent intent = new Intent(this, Info.class);
-        startActivity(intent);
+        switch (item.getItemId())
+        {
+            case R.id.que:
+                Info.setText(stringHelp);
+                Intent intent = new Intent(this, Info.class);
+                startActivity(intent);
+                return true;
+
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
         return false;
     }
 
@@ -48,6 +58,7 @@ public class Credit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Кредитный калькулятор</font>"));
         setContentView(R.layout.activity_credit);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
     }
 

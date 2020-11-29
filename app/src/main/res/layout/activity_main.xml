@@ -75,10 +75,10 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="startCredit"
+                android:onClick="bankPercent"
                 android:padding="25dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/percent" />
+                android:src="@drawable/kredit_simple" />
 
         </LinearLayout>
 

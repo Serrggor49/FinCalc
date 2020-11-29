@@ -80,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void bankPercent(View v){
+        Intent intent = new Intent(MainActivity.this, Bank_percent.class);
+        startActivity(intent);
+    }
+
 
 
 

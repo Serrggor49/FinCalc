@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 public class Ipoteka extends AppCompatActivity {
 
+    Double A; // результат инвестирования под сложный процент
+
     EditText stoimostJilyaEditText; // поле ввода первоначального вклада
     EditText pervonachalniyVznosEditText; // поле ввода процентной ставки
     EditText procentnayaStavkaEditText;  // поле ввода продолжительности вклада
@@ -41,9 +43,19 @@ public class Ipoteka extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        Info.setText(stringHelp);
-        Intent intent = new Intent(this, Info.class);
-        startActivity(intent);
+        switch (item.getItemId())
+        {
+            case R.id.que:
+                Info.setText(stringHelp);
+                Intent intent = new Intent(this, Info.class);
+                startActivity(intent);
+                return true;
+
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
         return false;
     }
 
@@ -52,6 +64,7 @@ public class Ipoteka extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Ипотечный калькулятор</font>"));
         setContentView(R.layout.activity_ipoteka);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
     }
 

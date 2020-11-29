@@ -1,6 +1,7 @@
 package com49.comments49.fincalc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -55,9 +56,20 @@ public class Slojniy_procent extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Info.setText(stringHelp);
-        Intent intent = new Intent(this, Info.class);
-        startActivity(intent);
+
+        switch (item.getItemId())
+        {
+            case R.id.que:
+                Info.setText(stringHelp);
+                Intent intent = new Intent(this, Info.class);
+                startActivity(intent);
+                return true;
+
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
         return false;
     }
 
@@ -66,6 +78,7 @@ public class Slojniy_procent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Сложный процент</font>"));
         setContentView(R.layout.activity_slojniy_procent);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
 
         init();
         setDesignGraf();
@@ -85,7 +98,6 @@ public class Slojniy_procent extends AppCompatActivity {
 
 
     public void setDesignGraf(){
-
 
         graf_1 = new LineGraphSeries<>(arrayListDataPoint.toArray(new DataPoint[0]));
         graf_1.setColor(getResources().getColor(R.color.green_graf, null));  // цвет графика
