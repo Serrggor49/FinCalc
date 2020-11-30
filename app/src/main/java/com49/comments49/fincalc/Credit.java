@@ -60,8 +60,17 @@ public class Credit extends AppCompatActivity {
         setContentView(R.layout.activity_credit);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
+        separateTextView();
     }
 
+    public void separateTextView(){
+        summaKreditaEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                summaKreditaEditText.setText(Methods.separate(summaKreditaEditText.getText().toString()));
+            }
+        });
+    }
 
     public void init() {
         summaKreditaEditText = findViewById(R.id.stoimost_jilya_editText_id);
@@ -70,6 +79,7 @@ public class Credit extends AppCompatActivity {
         resultEditText = findViewById(R.id.result_editText_id);
         resultVsegoViplat = findViewById(R.id.result_vsego_viplat_editText_id);
         resultPereplata = findViewById(R.id.result_pereplat_editText_id);
+        summaKreditaEditText.setText(Methods.separate(summaKreditaEditText.getText().toString()));
     }
     
 

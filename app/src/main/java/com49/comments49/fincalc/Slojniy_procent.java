@@ -10,9 +10,12 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -80,11 +83,37 @@ public class Slojniy_procent extends AppCompatActivity {
         setContentView(R.layout.activity_slojniy_procent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
 
+
         init();
+        separateTextView();
         setDesignGraf();
+
+
+        //EditText myEditText = findViewById(R.id.vznos_pervonachalniy_editText_id);
+
+
+//        vznosPervonachalniy.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if (hasFocus) {
+//                    vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+//                }
+//            }
+//        });
+
 
     }
 
+
+    public void separateTextView(){
+        vznosPervonachalniy.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+
+            }
+        });
+    }
 
     public void init(){
         graph = findViewById(R.id.graph);
@@ -94,6 +123,8 @@ public class Slojniy_procent extends AppCompatActivity {
         kolichestvo_nachisleniy = findViewById(R.id.kolichestvo_nachisleniy_editText_id);
         result = findViewById(R.id.result_editText_id);
         profit = findViewById(R.id.profit_editText_id);
+        vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+
     }
 
 
@@ -152,6 +183,7 @@ public class Slojniy_procent extends AppCompatActivity {
 //        graph.setLayoutParams(param);
 
     }
+
 
 
 

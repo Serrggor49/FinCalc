@@ -65,13 +65,24 @@ public class Bank_percent extends AppCompatActivity {
         setContentView(R.layout.activity_bank_percent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
+        separateTextView();
     }
 
+
+    public void separateTextView(){
+        vznosPervonachalniy.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+            }
+        });
+    }
 
     public void init(){
         vznosPervonachalniy = findViewById(R.id.vznos_pervonachalniy_editText_id);
         stavkaProcentnaya = findViewById(R.id.stavka_procentnaya_editText_id);
         result = findViewById(R.id.result_editText_id);
+        vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
     }
 
 
@@ -79,7 +90,7 @@ public class Bank_percent extends AppCompatActivity {
 
         A_2 = P*r;
         String result_v = String.format("%.2f",  A_2);
-        result.setText("Годовой процент " + Methods.separate(result_v));
+        result.setText("" + Methods.separate(result_v));
 
     }
 

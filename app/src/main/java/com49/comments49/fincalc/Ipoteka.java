@@ -66,8 +66,18 @@ public class Ipoteka extends AppCompatActivity {
         setContentView(R.layout.activity_ipoteka);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
+        separateTextView();
     }
 
+
+    public void separateTextView(){
+        stoimostJilyaEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
+            }
+        });
+    }
 
     public void init() {
         stoimostJilyaEditText = findViewById(R.id.stoimost_jilya_editText_id);
@@ -77,6 +87,8 @@ public class Ipoteka extends AppCompatActivity {
         resultEditText = findViewById(R.id.result_editText_id);
         resultVsegoViplat = findViewById(R.id.result_vsego_viplat_editText_id);
         resultPereplata = findViewById(R.id.result_pereplat_editText_id);
+        stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
+
     }
 
 

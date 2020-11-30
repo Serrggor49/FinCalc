@@ -125,6 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
+                    android:text="Процентный доход:"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp" />
 
@@ -136,6 +137,7 @@
                     android:layout_marginTop="15dp"
                     android:textColor="#FF14CA1D"
                     android:textSize="18sp" />
+
             </LinearLayout>
 
             <TextView
