@@ -75,6 +75,7 @@ public class Ipoteka extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
+                pervonachalniyVznosEditText.setText(Methods.separate(pervonachalniyVznosEditText.getText().toString()));
             }
         });
     }
@@ -87,7 +88,9 @@ public class Ipoteka extends AppCompatActivity {
         resultEditText = findViewById(R.id.result_editText_id);
         resultVsegoViplat = findViewById(R.id.result_vsego_viplat_editText_id);
         resultPereplata = findViewById(R.id.result_pereplat_editText_id);
+
         stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
+        pervonachalniyVznosEditText.setText(Methods.separate(pervonachalniyVznosEditText.getText().toString()));
 
     }
 
