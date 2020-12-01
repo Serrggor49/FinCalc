@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,6 +30,9 @@ public class Bank_percent extends AppCompatActivity {
     //EditText kolichestvo_nachisleniy;   // поле ввода периодичности выплаты процентов за год
     //TextView profit; // заработанная сумма (сумма в конце вклада минус первоначальный вклад)
     TextView result; // сумма в конце вклада
+
+
+    boolean canSeparate = false;  // типа флага, который говорит о том, что в данный момент нельзя осуществлять сепарацию числа
 
     int stringHelp = R.string.help_slojniy_procent;
 
@@ -69,11 +74,37 @@ public class Bank_percent extends AppCompatActivity {
     }
 
 
+
+
+
     public void separateTextView(){
-        vznosPervonachalniy.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+        vznosPervonachalniy.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
+
+                if (!canSeparate)  //
+                {
+                    int a = vznosPervonachalniy.getSelectionEnd();
+                    String textAfter = vznosPervonachalniy.getText().toString();
+                    canSeparate = true;
+
+                    vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+                    String textBefore = vznosPervonachalniy.getText().toString();
+
+                    vznosPervonachalniy.setSelection(a - (textAfter.length()-textBefore.length()));
+                }
+                else {
+                    canSeparate = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
             }
         });
     }
@@ -109,7 +140,7 @@ public class Bank_percent extends AppCompatActivity {
             s.insert(i, " ");
         }
 
-        vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+       // vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
 
     }
 

@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,6 +26,10 @@ public class Ipoteka extends AppCompatActivity {
     TextView resultEditText;
     TextView resultVsegoViplat;
     TextView resultPereplata;
+
+    boolean canSeparateStoimostJilya = false;  // типа флага, который говорит о том, что в данный момент нельзя осуществлять сепарацию числа
+    boolean canSeparatePervonachalniyVznos = false;  // типа флага, который говорит о том, что в данный момент нельзя осуществлять сепарацию числа
+
 
     double stoimostJilya;
     double pervonachalniyVznos;
@@ -67,6 +73,8 @@ public class Ipoteka extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
         separateTextView();
+        separatePervonachalniyVznos();
+        separateStoimostJilya();
     }
 
 
@@ -95,6 +103,73 @@ public class Ipoteka extends AppCompatActivity {
     }
 
 
+    public void separatePervonachalniyVznos(){
+
+        pervonachalniyVznosEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
+
+                if (!canSeparateStoimostJilya)  //
+                {
+                    int a = pervonachalniyVznosEditText.getSelectionEnd();
+                    String textAfter = pervonachalniyVznosEditText.getText().toString();
+                    canSeparateStoimostJilya = true;
+
+                    pervonachalniyVznosEditText.setText(Methods.separate(pervonachalniyVznosEditText.getText().toString()));
+                    String textBefore = pervonachalniyVznosEditText.getText().toString();
+
+                    pervonachalniyVznosEditText.setSelection(a - (textAfter.length()-textBefore.length()));
+                }
+                else {
+                    canSeparateStoimostJilya = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+
+    }
+
+
+    public void separateStoimostJilya(){
+
+        stoimostJilyaEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
+
+                if (!canSeparatePervonachalniyVznos)  //
+                {
+                    int a = stoimostJilyaEditText.getSelectionEnd();
+                    String textAfter = stoimostJilyaEditText.getText().toString();
+                    canSeparatePervonachalniyVznos = true;
+
+                    stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
+                    String textBefore = stoimostJilyaEditText.getText().toString();
+
+                    stoimostJilyaEditText.setSelection(a - (textAfter.length()-textBefore.length()));
+                }
+                else {
+                    canSeparatePervonachalniyVznos = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+
+    }
+
     public void getData(View view) { //получаем значение полей и вычисляем результат
 
         String stoimost = stoimostJilyaEditText.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
@@ -106,8 +181,8 @@ public class Ipoteka extends AppCompatActivity {
         srok = Double.parseDouble(srokEditText.getText().toString()) * 12;
         calculate();
 
-        stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
-        pervonachalniyVznosEditText.setText(Methods.separate(pervonachalniyVznosEditText.getText().toString()));
+        //stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
+        //pervonachalniyVznosEditText.setText(Methods.separate(pervonachalniyVznosEditText.getText().toString()));
 
     }
 

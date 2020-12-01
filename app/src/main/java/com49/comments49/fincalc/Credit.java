@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,6 +22,9 @@ public class Credit extends AppCompatActivity {
     TextView resultEditText;
     TextView resultVsegoViplat;
     TextView resultPereplata;
+
+    boolean canSeparate = false;  // типа флага, который говорит о том, что в данный момент нельзя осуществлять сепарацию числа
+
 
     double summaKredita;
     double procentnayaStavka;
@@ -63,14 +68,18 @@ public class Credit extends AppCompatActivity {
         separateTextView();
     }
 
-    public void separateTextView(){
-        summaKreditaEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                summaKreditaEditText.setText(Methods.separate(summaKreditaEditText.getText().toString()));
-            }
-        });
-    }
+//    public void separateTextView(){
+//        summaKreditaEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View view, boolean hasFocus) {
+//                summaKreditaEditText.setText(Methods.separate(summaKreditaEditText.getText().toString()));
+//            }
+//        });
+//    }
+
+
+
+
 
     public void init() {
         summaKreditaEditText = findViewById(R.id.stoimost_jilya_editText_id);
@@ -81,7 +90,41 @@ public class Credit extends AppCompatActivity {
         resultPereplata = findViewById(R.id.result_pereplat_editText_id);
         summaKreditaEditText.setText(Methods.separate(summaKreditaEditText.getText().toString()));
     }
-    
+
+
+
+
+    public void separateTextView(){
+
+        summaKreditaEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
+
+                if (!canSeparate)  //
+                {
+                    int a = summaKreditaEditText.getSelectionEnd();
+                    String textAfter = summaKreditaEditText.getText().toString();
+                    canSeparate = true;
+
+                    summaKreditaEditText.setText(Methods.separate(summaKreditaEditText.getText().toString()));
+                    String textBefore = summaKreditaEditText.getText().toString();
+
+                    summaKreditaEditText.setSelection(a - (textAfter.length()-textBefore.length()));
+                }
+                else {
+                    canSeparate = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+    }
 
     public void getData(View view) { //получаем значение полей и вычисляем результат
 
@@ -92,7 +135,7 @@ public class Credit extends AppCompatActivity {
         srok = Double.parseDouble(srokEditText.getText().toString()) * 12;
         calculate();
 
-        summaKreditaEditText.setText(Methods.separate(summaKreditaEditText.getText().toString()));
+        //summaKreditaEditText.setText(Methods.separate(summaKreditaEditText.getText().toString()));
 
     }
 

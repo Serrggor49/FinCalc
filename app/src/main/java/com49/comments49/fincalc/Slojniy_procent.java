@@ -40,9 +40,8 @@ public class Slojniy_procent extends AppCompatActivity {
     double n; // количество начислений в году (если каждый месяц начисляют процент, то = 12)
 
 
-    boolean canSeparate = false;
-    int lenghtVznos_1=0;
-    int lenghtVznos_2=0;
+    boolean canSeparate = false;  // типа флага, который говорит о том, что в данный момент нельзя осуществлять сепарацию числа
+
 
     EditText vznosPervonachalniy; // поле ввода первоначального вклада
     EditText stavkaProcentnaya; // поле ввода процентной ставки
@@ -58,7 +57,6 @@ public class Slojniy_procent extends AppCompatActivity {
     GraphView graph;  // график
     int stringHelp = R.string.help_slojniy_procent;
 
-    TextWatcher txtwt;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -95,13 +93,61 @@ public class Slojniy_procent extends AppCompatActivity {
 
 
         init();
-        //separateTextView();
         setDesignGraf();
+        separateTextView();
 
 
 
 
 
+
+//        vznosPervonachalniy.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
+//
+//                if (!canSeparate)  //
+//                {
+//                    int a = vznosPervonachalniy.getSelectionEnd();
+//                    String textAfter = vznosPervonachalniy.getText().toString();
+//                    canSeparate = true;
+//
+//                    vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+//                    String textBefore = vznosPervonachalniy.getText().toString();
+//
+//                    vznosPervonachalniy.setSelection(a - (textAfter.length()-textBefore.length()));
+//                }
+//                else {
+//                    canSeparate = false;
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//            }
+//        });
+
+    }
+
+
+
+    public void init(){
+        graph = findViewById(R.id.graph);
+        vznosPervonachalniy = findViewById(R.id.vznos_pervonachalniy_editText_id);
+        stavkaProcentnaya = findViewById(R.id.stavka_procentnaya_editText_id);
+        srok = findViewById(R.id.srok_editText_id);
+        kolichestvo_nachisleniy = findViewById(R.id.kolichestvo_nachisleniy_editText_id);
+        result = findViewById(R.id.result_editText_id);
+        profit = findViewById(R.id.profit_editText_id);
+        vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+
+    }
+
+
+    public void separateTextView(){
 
         vznosPervonachalniy.addTextChangedListener(new TextWatcher() {
             @Override
@@ -131,20 +177,6 @@ public class Slojniy_procent extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
             }
         });
-
-    }
-
-
-    public void init(){
-        graph = findViewById(R.id.graph);
-        vznosPervonachalniy = findViewById(R.id.vznos_pervonachalniy_editText_id);
-        stavkaProcentnaya = findViewById(R.id.stavka_procentnaya_editText_id);
-        srok = findViewById(R.id.srok_editText_id);
-        kolichestvo_nachisleniy = findViewById(R.id.kolichestvo_nachisleniy_editText_id);
-        result = findViewById(R.id.result_editText_id);
-        profit = findViewById(R.id.profit_editText_id);
-        vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
-
     }
 
 
@@ -173,8 +205,7 @@ public class Slojniy_procent extends AppCompatActivity {
             s.insert(i, " ");
         }
 
-        //vznosPervonachalniy.setText(s.toString());
-        vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+       // vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
 
     }
 
