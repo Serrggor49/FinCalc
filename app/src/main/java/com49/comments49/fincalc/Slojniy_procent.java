@@ -6,7 +6,11 @@ import androidx.core.app.NavUtils;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,6 +39,11 @@ public class Slojniy_procent extends AppCompatActivity {
     double t; // срок, лет
     double n; // количество начислений в году (если каждый месяц начисляют процент, то = 12)
 
+
+    boolean canSeparate = false;
+    int lenghtVznos_1=0;
+    int lenghtVznos_2=0;
+
     EditText vznosPervonachalniy; // поле ввода первоначального вклада
     EditText stavkaProcentnaya; // поле ввода процентной ставки
     EditText srok;  // поле ввода продолжительности вклада
@@ -49,6 +58,7 @@ public class Slojniy_procent extends AppCompatActivity {
     GraphView graph;  // график
     int stringHelp = R.string.help_slojniy_procent;
 
+    TextWatcher txtwt;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,35 +95,45 @@ public class Slojniy_procent extends AppCompatActivity {
 
 
         init();
-        separateTextView();
+        //separateTextView();
         setDesignGraf();
 
 
-        //EditText myEditText = findViewById(R.id.vznos_pervonachalniy_editText_id);
 
 
-//        vznosPervonachalniy.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if (hasFocus) {
-//                    vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
-//                }
-//            }
-//        });
 
 
-    }
-
-
-    public void separateTextView(){
-        vznosPervonachalniy.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        vznosPervonachalniy.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
+
+                if (!canSeparate)  //
+                {
+                    int a = vznosPervonachalniy.getSelectionEnd();
+                    String textAfter = vznosPervonachalniy.getText().toString();
+                    canSeparate = true;
+
+                    vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
+                    String textBefore = vznosPervonachalniy.getText().toString();
+
+                    vznosPervonachalniy.setSelection(a - (textAfter.length()-textBefore.length()));
+                }
+                else {
+                    canSeparate = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
             }
         });
+
     }
+
 
     public void init(){
         graph = findViewById(R.id.graph);
