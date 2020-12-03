@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Credit extends AppCompatActivity {
 
@@ -128,14 +129,17 @@ public class Credit extends AppCompatActivity {
 
     public void getData(View view) { //получаем значение полей и вычисляем результат
 
-        String stoimost = summaKreditaEditText.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
+        try {
+            String stoimost = summaKreditaEditText.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
+            summaKredita = Double.parseDouble(stoimost);
+            procentnayaStavka = Double.parseDouble(procentnayaStavkaEditText.getText().toString()) / 100 / 12;
+            srok = Double.parseDouble(srokEditText.getText().toString()) * 12;
+            calculate();
+        }
 
-        summaKredita = Double.parseDouble(stoimost);
-        procentnayaStavka = Double.parseDouble(procentnayaStavkaEditText.getText().toString()) / 100 / 12;
-        srok = Double.parseDouble(srokEditText.getText().toString()) * 12;
-        calculate();
-
-        //summaKreditaEditText.setText(Methods.separate(summaKreditaEditText.getText().toString()));
+        catch (NumberFormatException e){
+            Toast.makeText(this, "Убедитесь в правильности заполнения полей", Toast.LENGTH_LONG).show();
+        }
 
     }
 

@@ -97,39 +97,6 @@ public class Slojniy_procent extends AppCompatActivity {
         separateTextView();
 
 
-
-
-
-
-//        vznosPervonachalniy.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
-//
-//                if (!canSeparate)  //
-//                {
-//                    int a = vznosPervonachalniy.getSelectionEnd();
-//                    String textAfter = vznosPervonachalniy.getText().toString();
-//                    canSeparate = true;
-//
-//                    vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
-//                    String textBefore = vznosPervonachalniy.getText().toString();
-//
-//                    vznosPervonachalniy.setSelection(a - (textAfter.length()-textBefore.length()));
-//                }
-//                else {
-//                    canSeparate = false;
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//            }
-//        });
-
     }
 
 
@@ -147,7 +114,7 @@ public class Slojniy_procent extends AppCompatActivity {
     }
 
 
-    public void separateTextView(){
+    public void separateTextView(){  // разделяем на лету вводимые числа
 
         vznosPervonachalniy.addTextChangedListener(new TextWatcher() {
             @Override
@@ -192,17 +159,23 @@ public class Slojniy_procent extends AppCompatActivity {
 
     public void getData(View view) { //получаем значение полей и вычисляем результат
 
-        String vznos = vznosPervonachalniy.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
-        P = Double.parseDouble(vznos);
-        r = Double.parseDouble(stavkaProcentnaya.getText().toString()) / 100;
-        t = Double.parseDouble(srok.getText().toString());
-        n = Double.parseDouble(kolichestvo_nachisleniy.getText().toString());
+        try {
+            String vznos = vznosPervonachalniy.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
+            P = Double.parseDouble(vznos);
+            r = Double.parseDouble(stavkaProcentnaya.getText().toString()) / 100;
+            t = Double.parseDouble(srok.getText().toString());
+            n = Double.parseDouble(kolichestvo_nachisleniy.getText().toString());
+            calculate();
 
-        calculate();
+            StringBuilder s = new StringBuilder(vznosPervonachalniy.getText().toString().replace(" ", "")); // добавляем пробелы в значение первоначального взноса для улучшения читабельности
+            for (int i = s.length(); i > 0; i = i - 3) {
+                s.insert(i, " ");
+            }
+        }
 
-        StringBuilder s = new StringBuilder(vznosPervonachalniy.getText().toString().replace(" ", "")); // добавляем пробелы в значение первоначального взноса для улучшения читабельности
-        for(int i = s.length(); i > 0; i = i-3){
-            s.insert(i, " ");
+        catch (NumberFormatException e){
+            Toast.makeText(this, "Убедитесь в правильности заполнения полей", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "ошибка " + e.toString(), Toast.LENGTH_LONG).show();
         }
 
        // vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
@@ -215,7 +188,7 @@ public class Slojniy_procent extends AppCompatActivity {
         A = (P * (Math.pow((1 + (r / n)), (n * t)))); // стоимость вклада по окончанию срока (сложный процент)
         String result_v = String.format("%.2f",  A);
         result.setText(" " + Methods.separate(result_v));
-        String result_prft =  String.format("%.2f",  (A-P));
+        //String result_prft =  String.format("%.2f",  (A-P));
         // profit.setText("Прибыль               " + separate(result_prft));
 
 

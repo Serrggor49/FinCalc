@@ -172,14 +172,29 @@ public class Ipoteka extends AppCompatActivity {
 
     public void getData(View view) { //получаем значение полей и вычисляем результат
 
-        String stoimost = stoimostJilyaEditText.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
-        String vznos = pervonachalniyVznosEditText.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
+        try {
+            String stoimost = stoimostJilyaEditText.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
+            String vznos = pervonachalniyVznosEditText.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
 
-        stoimostJilya = Double.parseDouble(stoimost);
-        pervonachalniyVznos = Double.parseDouble(vznos);
-        procentnayaStavka = Double.parseDouble(procentnayaStavkaEditText.getText().toString()) / 100 / 12;
-        srok = Double.parseDouble(srokEditText.getText().toString()) * 12;
-        calculate();
+            stoimostJilya = Double.parseDouble(stoimost);
+            pervonachalniyVznos = Double.parseDouble(vznos);
+            procentnayaStavka = Double.parseDouble(procentnayaStavkaEditText.getText().toString()) / 100 / 12;
+            srok = Double.parseDouble(srokEditText.getText().toString()) * 12;
+
+
+            if (stoimostJilya<pervonachalniyVznos)
+            {
+                Toast.makeText(this, "Первоначальный взнос не может превышать стоимость жилья", Toast.LENGTH_LONG).show();
+
+            }
+            else {
+                calculate();
+            }
+        }
+
+        catch (NumberFormatException e){
+            Toast.makeText(this, "Убедитесь в правильности заполнения полей", Toast.LENGTH_LONG).show();
+        }
 
         //stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
         //pervonachalniyVznosEditText.setText(Methods.separate(pervonachalniyVznosEditText.getText().toString()));

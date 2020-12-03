@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jjoe64.graphview.series.DataPoint;
 
@@ -129,19 +130,23 @@ public class Bank_percent extends AppCompatActivity {
 
     public void getData(View view) { //получаем значение полей и вычисляем результат
 
-        String vznos = vznosPervonachalniy.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
-        P = Double.parseDouble(vznos);
-        r = Double.parseDouble(stavkaProcentnaya.getText().toString()) / 100;
+        try {
+            String vznos = vznosPervonachalniy.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
+            P = Double.parseDouble(vznos);
+            r = Double.parseDouble(stavkaProcentnaya.getText().toString()) / 100;
 
-        calculate();
+            calculate();
 
-        StringBuilder s = new StringBuilder(vznosPervonachalniy.getText().toString().replace(" ", "")); // добавляем пробелы в значение первоначального взноса для улучшения читабельности
-        for(int i = s.length(); i > 0; i = i-3){
-            s.insert(i, " ");
+            StringBuilder s = new StringBuilder(vznosPervonachalniy.getText().toString().replace(" ", "")); // добавляем пробелы в значение первоначального взноса для улучшения читабельности
+            for (int i = s.length(); i > 0; i = i - 3) {
+                s.insert(i, " ");
+            }
+
         }
 
-       // vznosPervonachalniy.setText(Methods.separate(vznosPervonachalniy.getText().toString()));
-
+        catch (NumberFormatException e){
+            Toast.makeText(this, "Убедитесь в правильности заполнения полей", Toast.LENGTH_LONG).show();
+        }
     }
 
 
