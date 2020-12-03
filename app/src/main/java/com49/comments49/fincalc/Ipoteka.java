@@ -49,8 +49,7 @@ public class Ipoteka extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.que:
                 Info.setText(stringHelp);
                 Intent intent = new Intent(this, Info.class);
@@ -78,7 +77,7 @@ public class Ipoteka extends AppCompatActivity {
     }
 
 
-    public void separateTextView(){
+    public void separateTextView() {
         stoimostJilyaEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
@@ -103,7 +102,7 @@ public class Ipoteka extends AppCompatActivity {
     }
 
 
-    public void separatePervonachalniyVznos(){
+    public void separatePervonachalniyVznos() {
 
         pervonachalniyVznosEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -122,9 +121,8 @@ public class Ipoteka extends AppCompatActivity {
                     pervonachalniyVznosEditText.setText(Methods.separate(pervonachalniyVznosEditText.getText().toString()));
                     String textBefore = pervonachalniyVznosEditText.getText().toString();
 
-                    pervonachalniyVznosEditText.setSelection(a - (textAfter.length()-textBefore.length()));
-                }
-                else {
+                    pervonachalniyVznosEditText.setSelection(a - (textAfter.length() - textBefore.length()));
+                } else {
                     canSeparateStoimostJilya = false;
                 }
             }
@@ -137,7 +135,7 @@ public class Ipoteka extends AppCompatActivity {
     }
 
 
-    public void separateStoimostJilya(){
+    public void separateStoimostJilya() {
 
         stoimostJilyaEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -156,9 +154,8 @@ public class Ipoteka extends AppCompatActivity {
                     stoimostJilyaEditText.setText(Methods.separate(stoimostJilyaEditText.getText().toString()));
                     String textBefore = stoimostJilyaEditText.getText().toString();
 
-                    stoimostJilyaEditText.setSelection(a - (textAfter.length()-textBefore.length()));
-                }
-                else {
+                    stoimostJilyaEditText.setSelection(a - (textAfter.length() - textBefore.length()));
+                } else {
                     canSeparatePervonachalniyVznos = false;
                 }
             }
@@ -182,17 +179,13 @@ public class Ipoteka extends AppCompatActivity {
             srok = Double.parseDouble(srokEditText.getText().toString()) * 12;
 
 
-            if (stoimostJilya<pervonachalniyVznos)
-            {
+            if (stoimostJilya < pervonachalniyVznos) {
                 Toast.makeText(this, "Первоначальный взнос не может превышать стоимость жилья", Toast.LENGTH_LONG).show();
 
-            }
-            else {
+            } else {
                 calculate();
             }
-        }
-
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Toast.makeText(this, "Убедитесь в правильности заполнения полей", Toast.LENGTH_LONG).show();
         }
 

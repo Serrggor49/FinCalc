@@ -29,7 +29,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="startSlojniyProcent"
+                android:onClick="openSlojniyProcent"
                 android:scaleType="fitXY"
                 android:src="@drawable/percent" />
 
@@ -41,7 +41,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="startIpoteka"
+                android:onClick="openIpoteka"
                 android:scaleType="fitXY"
                 android:src="@drawable/ipoteka" />
 
@@ -61,7 +61,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="startCredit"
+                android:onClick="openCredit"
                 android:scaleType="fitXY"
                 android:src="@drawable/kredit" />
 
@@ -73,7 +73,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="bankPercent"
+                android:onClick="openPercent"
                 android:scaleType="fitXY"
                 android:src="@drawable/kredit_simple" />
 
