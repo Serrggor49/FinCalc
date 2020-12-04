@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
      public void openSlojniyProcent(View v){
-        Intent intent = new Intent(MainActivity.this, Slojniy_procent.class);
+        Intent intent = new Intent(MainActivity.this, SlojniyProcent.class);
         startActivity(intent);
     }
 

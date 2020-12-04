@@ -15,7 +15,7 @@
             android:name=".Ipoteka"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Slojniy_procent"
+            android:name=".SlojniyProcent"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Info"

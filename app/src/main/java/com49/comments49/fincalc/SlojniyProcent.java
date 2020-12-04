@@ -1,30 +1,18 @@
 package com49.comments49.fincalc;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
-
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.Html;
-import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
 import java.util.ArrayList;
 
-public class Slojniy_procent extends MyAppCompatActivity {
+public class SlojniyProcent extends MyAppCompatActivity {
 
     static final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
     private EditText vznosPervonachalniyEdit; // поле ввода первоначального вклада
@@ -35,7 +23,6 @@ public class Slojniy_procent extends MyAppCompatActivity {
     private ArrayList<DataPoint> arrayListDataPoint = new ArrayList<>(); // в этот лист добавляются пары значений DataPoint(x, y)
     private LineGraphSeries<DataPoint> graf_1;  //
     private GraphView graph;  // график
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +36,6 @@ public class Slojniy_procent extends MyAppCompatActivity {
         stringHelp = R.string.help_slojniy_procent;
         calculate(null);
     }
-
 
     private void init() {
         graph = findViewById(R.id.graph);
@@ -65,7 +51,7 @@ public class Slojniy_procent extends MyAppCompatActivity {
 
         try {
             double resultInvestnig;
-            double pervonachalniyVznos = Double.parseDouble( vznosPervonachalniyEdit.getText().toString().replace(" ", "")); // убираем пробелы-разделители, чтобы не выдало ошибку при преобразовании полученного значения в Double
+            double pervonachalniyVznos = Double.parseDouble(vznosPervonachalniyEdit.getText().toString().replace(" ", "")); // убираем пробелы-разделители, чтобы не выдало ошибку при преобразовании полученного значения в Double
             double procentnayaStavka = Double.parseDouble(stavkaProcentnayaEdit.getText().toString()) / 100;
             double srok = Double.parseDouble(srokEdit.getText().toString());
             double kolichestvoNachisleniy = Double.parseDouble(kolichestvo_nachisleniyEdit.getText().toString());   // количество начислений в году (если процент начисляют ежемесячно, то = 12)
@@ -74,7 +60,7 @@ public class Slojniy_procent extends MyAppCompatActivity {
             String result_v = String.format("%.2f", resultInvestnig);
             resultTextView.setText(separate(result_v));
 
-            for (int i = 0; i <= srok; i++) {  // тут расчитываем стоимость вклада с шагом в один год, для построения графика
+            for (int i = 0; i <= srok; i++) {  //  расчитываем стоимость вклада с шагом в один год, для построения графика
                 resultInvestnig = (pervonachalniyVznos * (Math.pow((1 + (procentnayaStavka / kolichestvoNachisleniy)), (kolichestvoNachisleniy * i))));
                 arrayListDataPoint.add(new DataPoint(i, resultInvestnig));
             }
@@ -84,9 +70,7 @@ public class Slojniy_procent extends MyAppCompatActivity {
         } catch (NumberFormatException e) {
             Toast.makeText(this, INPUT_ERROR, Toast.LENGTH_LONG).show();
         }
-
     }
-
 
     private void setDesignGraf() {
         graf_1 = new LineGraphSeries<>(arrayListDataPoint.toArray(new DataPoint[0]));

@@ -17,19 +17,15 @@ import android.widget.Toast;
 
 import com.jjoe64.graphview.series.DataPoint;
 
-public class Bank_percent extends AppCompatActivity {
+public class Bank_percent extends MyAppCompatActivity {
 
 
     double A_2; // результат инвестирования под простой процент
     double P; // первоначальный взнос
     double r; // годовая процентная ставка
-    double t; // срок, лет
 
     EditText vznosPervonachalniy; // поле ввода первоначального вклада
     EditText stavkaProcentnaya; // поле ввода процентной ставки
-    //EditText srok;  // поле ввода продолжительности вклада
-    //EditText kolichestvo_nachisleniy;   // поле ввода периодичности выплаты процентов за год
-    //TextView profit; // заработанная сумма (сумма в конце вклада минус первоначальный вклад)
     TextView result; // сумма в конце вклада
 
 

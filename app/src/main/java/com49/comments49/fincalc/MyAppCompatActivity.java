@@ -26,8 +26,7 @@ public class MyAppCompatActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.que:
                 Info.setText(stringHelp);
                 Intent intent = new Intent(this, Info.class);
@@ -43,8 +42,7 @@ public class MyAppCompatActivity extends AppCompatActivity {
     }
 
 
-
-    public void separateTextView(final EditText editText){  // разделяем на лету вводимые числа
+    public void separateTextView(final EditText editText) {  // разделяем на лету вводимые числа
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -63,9 +61,8 @@ public class MyAppCompatActivity extends AppCompatActivity {
                     editText.setText(Methods.separate(editText.getText().toString()));
                     String textBefore = editText.getText().toString();
 
-                    editText.setSelection(a - (textAfter.length()-textBefore.length()));
-                }
-                else {
+                    editText.setSelection(a - (textAfter.length() - textBefore.length()));
+                } else {
                     canSeparateNumbers = false;
                 }
             }
@@ -75,7 +72,6 @@ public class MyAppCompatActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     public static String separate(String str) { // подаем на вход строку и добавляем в нее пробелы  для улучшения читабельности (было - 3000000, стало 3 000 000)
