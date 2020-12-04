@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +34,6 @@ public class Slojniy_procent extends MyAppCompatActivity {
     private TextView resultTextView; // сумма в конце вклада
     private ArrayList<DataPoint> arrayListDataPoint = new ArrayList<>(); // в этот лист добавляются пары значений DataPoint(x, y)
     private LineGraphSeries<DataPoint> graf_1;  //
-    private LineGraphSeries<DataPoint> graf_2;
     private GraphView graph;  // график
 
 
@@ -42,15 +42,12 @@ public class Slojniy_procent extends MyAppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Сложный процент</font>"));
         setContentView(R.layout.activity_slojniy_procent);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         init();
         setDesignGraf();
         separateTextView(vznosPervonachalniyEdit);
-
-
         stringHelp = R.string.help_slojniy_procent;
-
+        calculate(null);
     }
 
 
@@ -64,13 +61,11 @@ public class Slojniy_procent extends MyAppCompatActivity {
         vznosPervonachalniyEdit.setText(separate(vznosPervonachalniyEdit.getText().toString()));
     }
 
-
     public void calculate(View view) {  // в данном методе вычисляем значение сложного процента
 
         try {
-            String vznos = vznosPervonachalniyEdit.getText().toString().replace(" ", ""); // убираем пробелы-разделители, дабы не выдало ошибку при преобразовании полученного значения в Double
             double resultInvestnig;
-            double pervonachalniyVznos = Double.parseDouble(vznos);
+            double pervonachalniyVznos = Double.parseDouble( vznosPervonachalniyEdit.getText().toString().replace(" ", "")); // убираем пробелы-разделители, чтобы не выдало ошибку при преобразовании полученного значения в Double
             double procentnayaStavka = Double.parseDouble(stavkaProcentnayaEdit.getText().toString()) / 100;
             double srok = Double.parseDouble(srokEdit.getText().toString());
             double kolichestvoNachisleniy = Double.parseDouble(kolichestvo_nachisleniyEdit.getText().toString());   // количество начислений в году (если процент начисляют ежемесячно, то = 12)
@@ -93,7 +88,7 @@ public class Slojniy_procent extends MyAppCompatActivity {
     }
 
 
-    public void setDesignGraf() {
+    private void setDesignGraf() {
         graf_1 = new LineGraphSeries<>(arrayListDataPoint.toArray(new DataPoint[0]));
         graf_1.setColor(getResources().getColor(R.color.green_graf, null));  // цвет графика
         graph.getGridLabelRenderer().setGridColor(Color.GRAY); // цвет сетки графика
@@ -102,7 +97,7 @@ public class Slojniy_procent extends MyAppCompatActivity {
         graph.setCursorMode(true);
     }
 
-    void printGraph(double minX, double maxX, double minY, double maxY) {
+    private void printGraph(double minX, double maxX, double minY, double maxY) {
         setDesignGraf();
         graph.getViewport().setMinX(minX); // минимальное значение графика по оси X
         graph.getViewport().setMaxX(maxX); // максимальное значение графика по оси X
