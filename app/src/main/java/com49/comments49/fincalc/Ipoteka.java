@@ -30,7 +30,7 @@ public class Ipoteka extends MyAppCompatActivity {
         init();
         separateTextView(mStoimostJilyaEdit);
         separateTextView(mPervonachalniyVznosEdit);
-        stringHelp = HELP_TEXT;
+        mStringHelp = HELP_TEXT;
         calculate(null);
     }
 

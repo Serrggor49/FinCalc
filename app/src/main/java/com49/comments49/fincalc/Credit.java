@@ -29,7 +29,7 @@ public class Credit extends MyAppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
         separateTextView(mSummaKreditaEdit);
-        stringHelp = HELP_TEXT;
+        mStringHelp = HELP_TEXT;
         calculate(null);
     }
 

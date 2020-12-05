@@ -34,7 +34,7 @@ public class SlojniyProcent extends MyAppCompatActivity {
         init();
         setDesignGraf();
         separateTextView(mVznosPervonachalniyEdit);
-        stringHelp = HELP_TEXT;
+        mStringHelp = HELP_TEXT;
         calculate(null);
     }
 

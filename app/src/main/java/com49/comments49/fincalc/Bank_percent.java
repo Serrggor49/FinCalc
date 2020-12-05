@@ -23,7 +23,7 @@ public class Bank_percent extends MyAppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
         separateTextView(mVznosPervonachalniy);
-        stringHelp = HELP_TEXT;
+        mStringHelp = HELP_TEXT;
         calculate(null);
 
     }
