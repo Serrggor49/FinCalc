@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 public class Info extends AppCompatActivity {
 
-    TextView textView;
-    static int text;
+    private TextView mTextView;
+    private static int text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +19,10 @@ public class Info extends AppCompatActivity {
         init();
     }
 
-     void init(){
-        textView = findViewById(R.id.result_editText_id);
-        textView.setText(text);
+    void init() {
+        mTextView = findViewById(R.id.result_editText_id);
+        mTextView.setText(text);
     }
-
 
     public static void setText(int text) {
         Info.text = text;

@@ -12,9 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MyAppCompatActivity extends AppCompatActivity {
 
-    int stringHelp;  // текст с описанием раздела
-    boolean canSeparateNumbers = false;  // типа флага, который говорит о том, что в данный момент нельзя осуществлять сепарацию числа
-
+    int mStringHelp;  // текст с описанием раздела
+    boolean mCanSeparateNumbers = false;  // типа флага, который говорит о том, что в данный момент нельзя осуществлять сепарацию числа
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -28,7 +27,7 @@ public class MyAppCompatActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.que:
-                Info.setText(stringHelp);
+                Info.setText(mStringHelp);
                 Intent intent = new Intent(this, Info.class);
                 startActivity(intent);
                 return true;
@@ -37,7 +36,6 @@ public class MyAppCompatActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
         }
-
         return false;
     }
 
@@ -52,18 +50,16 @@ public class MyAppCompatActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int before, int count) {
 
-                if (!canSeparateNumbers)  //
+                if (!mCanSeparateNumbers)  //
                 {
                     int a = editText.getSelectionEnd();
                     String textAfter = editText.getText().toString();
-                    canSeparateNumbers = true;
-
-                    editText.setText(Methods.separate(editText.getText().toString()));
+                    mCanSeparateNumbers = true;
+                    editText.setText(separate(editText.getText().toString()));
                     String textBefore = editText.getText().toString();
-
                     editText.setSelection(a - (textAfter.length() - textBefore.length()));
                 } else {
-                    canSeparateNumbers = false;
+                    mCanSeparateNumbers = false;
                 }
             }
 

@@ -160,7 +160,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
                 android:background="#585454"
-                android:onClick="getData"
+                android:onClick="calculate"
                 android:text="Рассчитать"
                 android:textColor="#FFFFFF" />
 

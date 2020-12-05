@@ -14,15 +14,16 @@ import java.util.ArrayList;
 
 public class SlojniyProcent extends MyAppCompatActivity {
 
-    static final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
-    private EditText vznosPervonachalniyEdit; // поле ввода первоначального вклада
-    private EditText stavkaProcentnayaEdit; // поле ввода процентной ставки
-    private EditText srokEdit;  // поле ввода продолжительности вклада
-    private EditText kolichestvo_nachisleniyEdit;   // поле ввода периодичности выплаты процентов за год
-    private TextView resultTextView; // сумма в конце вклада
-    private ArrayList<DataPoint> arrayListDataPoint = new ArrayList<>(); // в этот лист добавляются пары значений DataPoint(x, y)
-    private LineGraphSeries<DataPoint> graf_1;  //
-    private GraphView graph;  // график
+    final int HELP_TEXT = R.string.help_slojniy_procent;
+    final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
+    private EditText mVznosPervonachalniyEdit; // поле ввода первоначального вклада
+    private EditText mStavkaProcentnayaEdit; // поле ввода процентной ставки
+    private EditText mSrokEdit;  // поле ввода продолжительности вклада
+    private EditText mKolichestvoNachisleniyEdit;   // поле ввода периодичности выплаты процентов за год
+    private TextView mResultTextView; // сумма в конце вклада
+    private ArrayList<DataPoint> mArrayListDataPoint = new ArrayList<>(); // в этот лист добавляются пары значений DataPoint(x, y)
+    private LineGraphSeries<DataPoint> mGraphSeries;  //
+    private GraphView mGraph;  // график
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,65 +33,65 @@ public class SlojniyProcent extends MyAppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         init();
         setDesignGraf();
-        separateTextView(vznosPervonachalniyEdit);
-        stringHelp = R.string.help_slojniy_procent;
+        separateTextView(mVznosPervonachalniyEdit);
+        stringHelp = HELP_TEXT;
         calculate(null);
     }
 
     private void init() {
-        graph = findViewById(R.id.graph);
-        vznosPervonachalniyEdit = findViewById(R.id.vznos_pervonachalniy_editText_id);
-        stavkaProcentnayaEdit = findViewById(R.id.stavka_procentnaya_editText_id);
-        srokEdit = findViewById(R.id.srok_editText_id);
-        kolichestvo_nachisleniyEdit = findViewById(R.id.kolichestvo_nachisleniy_editText_id);
-        resultTextView = findViewById(R.id.result_editText_id);
-        vznosPervonachalniyEdit.setText(separate(vznosPervonachalniyEdit.getText().toString()));
+        mGraph = findViewById(R.id.graph);
+        mVznosPervonachalniyEdit = findViewById(R.id.vznos_pervonachalniy_editText_id);
+        mStavkaProcentnayaEdit = findViewById(R.id.stavka_procentnaya_editText_id);
+        mSrokEdit = findViewById(R.id.srok_editText_id);
+        mKolichestvoNachisleniyEdit = findViewById(R.id.kolichestvo_nachisleniy_editText_id);
+        mResultTextView = findViewById(R.id.result_editText_id);
+        mVznosPervonachalniyEdit.setText(separate(mVznosPervonachalniyEdit.getText().toString()));
     }
 
     public void calculate(View view) {  // в данном методе вычисляем значение сложного процента
 
         try {
             double resultInvestnig;
-            double pervonachalniyVznos = Double.parseDouble(vznosPervonachalniyEdit.getText().toString().replace(" ", "")); // убираем пробелы-разделители, чтобы не выдало ошибку при преобразовании полученного значения в Double
-            double procentnayaStavka = Double.parseDouble(stavkaProcentnayaEdit.getText().toString()) / 100;
-            double srok = Double.parseDouble(srokEdit.getText().toString());
-            double kolichestvoNachisleniy = Double.parseDouble(kolichestvo_nachisleniyEdit.getText().toString());   // количество начислений в году (если процент начисляют ежемесячно, то = 12)
+            double pervonachalniyVznos = Double.parseDouble(mVznosPervonachalniyEdit.getText().toString().replace(" ", "")); // убираем пробелы-разделители, чтобы не выдало ошибку при преобразовании полученного значения в Double
+            double procentnayaStavka = Double.parseDouble(mStavkaProcentnayaEdit.getText().toString()) / 100;
+            double srok = Double.parseDouble(mSrokEdit.getText().toString());
+            double kolichestvoNachisleniy = Double.parseDouble(mKolichestvoNachisleniyEdit.getText().toString());   // количество начислений в году (если процент начисляют ежемесячно, то = 12)
 
             resultInvestnig = (pervonachalniyVznos * (Math.pow((1 + (procentnayaStavka / kolichestvoNachisleniy)), (kolichestvoNachisleniy * srok)))); // стоимость вклада по окончанию срока (сложный процент)
             String result_v = String.format("%.2f", resultInvestnig);
-            resultTextView.setText(separate(result_v));
+            mResultTextView.setText(separate(result_v));
 
             for (int i = 0; i <= srok; i++) {  //  расчитываем стоимость вклада с шагом в один год, для построения графика
                 resultInvestnig = (pervonachalniyVznos * (Math.pow((1 + (procentnayaStavka / kolichestvoNachisleniy)), (kolichestvoNachisleniy * i))));
-                arrayListDataPoint.add(new DataPoint(i, resultInvestnig));
+                mArrayListDataPoint.add(new DataPoint(i, resultInvestnig));
             }
 
             printGraph(0, srok, pervonachalniyVznos, resultInvestnig);
-            arrayListDataPoint.clear();
+            mArrayListDataPoint.clear();
         } catch (NumberFormatException e) {
             Toast.makeText(this, INPUT_ERROR, Toast.LENGTH_LONG).show();
         }
     }
 
     private void setDesignGraf() {
-        graf_1 = new LineGraphSeries<>(arrayListDataPoint.toArray(new DataPoint[0]));
-        graf_1.setColor(getResources().getColor(R.color.green_graf, null));  // цвет графика
-        graph.getGridLabelRenderer().setGridColor(Color.GRAY); // цвет сетки графика
-        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE); // цвет текста по оси Y
-        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE); // цвет текста по оси Y
-        graph.setCursorMode(true);
+        mGraphSeries = new LineGraphSeries<>(mArrayListDataPoint.toArray(new DataPoint[0]));
+        mGraphSeries.setColor(getResources().getColor(R.color.green_graf, null));  // цвет графика
+        mGraph.getGridLabelRenderer().setGridColor(Color.GRAY); // цвет сетки графика
+        mGraph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE); // цвет текста по оси Y
+        mGraph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE); // цвет текста по оси Y
+        mGraph.setCursorMode(true);
     }
 
     private void printGraph(double minX, double maxX, double minY, double maxY) {
         setDesignGraf();
-        graph.getViewport().setMinX(minX); // минимальное значение графика по оси X
-        graph.getViewport().setMaxX(maxX); // максимальное значение графика по оси X
-        graph.getViewport().setMinY(minY); // минимальное значение графика по оси Y
-        graph.getViewport().setMaxY(maxY); // максимальное значение графика по оси Y
-        graph.getViewport().setXAxisBoundsManual(true);
-        graph.getViewport().setYAxisBoundsManual(true);
-        graph.removeAllSeries();
-        graph.addSeries(graf_1);
+        mGraph.getViewport().setMinX(minX); // минимальное значение графика по оси X
+        mGraph.getViewport().setMaxX(maxX); // максимальное значение графика по оси X
+        mGraph.getViewport().setMinY(minY); // минимальное значение графика по оси Y
+        mGraph.getViewport().setMaxY(maxY); // максимальное значение графика по оси Y
+        mGraph.getViewport().setXAxisBoundsManual(true);
+        mGraph.getViewport().setYAxisBoundsManual(true);
+        mGraph.removeAllSeries();
+        mGraph.addSeries(mGraphSeries);
     }
 
 }
