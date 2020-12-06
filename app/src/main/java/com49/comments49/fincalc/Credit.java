@@ -1,7 +1,5 @@
 package com49.comments49.fincalc;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -11,7 +9,7 @@ import android.widget.Toast;
 
 public class Credit extends MyAppCompatActivity {
 
-    final int HELP_TEXT = R.string.help_slojniy_procent;
+    final int HELP_TEXT = R.string.help_credit;
     final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
     private EditText mSummaKreditaEdit; // поле ввода суммы
     private EditText mProcentnayaStavkaEdit;  // поле ввода продолжительности вклада

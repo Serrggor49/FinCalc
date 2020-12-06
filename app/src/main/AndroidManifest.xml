@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Bank_percent"></activity>
-        <activity android:name=".Credit" />
+        <activity android:name=".Bank_percent"
+            android:screenOrientation="portrait" ></activity>
+        <activity android:name=".Credit"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Ipoteka"
             android:screenOrientation="portrait" />

@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class Ipoteka extends MyAppCompatActivity {
 
-    final int HELP_TEXT = R.string.help_slojniy_procent;
+    final int HELP_TEXT = R.string.help_ipoteka;
     final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
     final String INPUT_ERROR_VZNOS = "Первоначальный взнос не может превышать стоимость жилья";
     private EditText mStoimostJilyaEdit; // поле ввода первоначального вклада

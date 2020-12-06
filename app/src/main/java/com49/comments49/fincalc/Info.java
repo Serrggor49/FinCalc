@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 public class Info extends AppCompatActivity {
 
+
     private TextView mTextView;
     private static int text;
 
@@ -17,6 +18,7 @@ public class Info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Справка</font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
     }

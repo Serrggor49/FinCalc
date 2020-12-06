@@ -22,26 +22,24 @@
             android:paddingTop="15dp">
 
             <ImageButton
-                android:id="@+id/imageButton467"
+                android:id="@+id/slojniy_procent_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="openSlojniyProcent"
                 android:scaleType="fitXY"
                 android:src="@drawable/percent" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/ipotechniy_calc_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="openIpoteka"
                 android:scaleType="fitXY"
                 android:src="@drawable/ipoteka" />
 
@@ -54,26 +52,24 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/kreditniy_calc_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="openCredit"
                 android:scaleType="fitXY"
                 android:src="@drawable/kredit" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/vkladov_calc_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
-                android:onClick="openPercent"
                 android:scaleType="fitXY"
                 android:src="@drawable/kredit_simple" />
 

@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class Bank_percent extends MyAppCompatActivity {
 
-    final int HELP_TEXT = R.string.help_slojniy_procent;
+    final int HELP_TEXT = R.string.help_bank_percent;
     final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
     private EditText mVznosPervonachalniy; // поле ввода первоначального вклада
     private EditText mStavkaProcentnaya; // поле ввода процентной ставки

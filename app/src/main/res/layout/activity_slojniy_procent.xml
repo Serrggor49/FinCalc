@@ -58,7 +58,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Первоначальный взнос"
+                            android:text="Сумма вклада"
                             android:textColor="#A2A1A1" />
                     </LinearLayout>
 
@@ -153,7 +153,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Срок вклада "
+                            android:text="Срок вклада, лет"
                             android:textColor="#B1B0B0" />
                     </LinearLayout>
 
