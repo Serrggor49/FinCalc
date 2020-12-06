@@ -48,30 +48,10 @@ public class MainActivity extends AppCompatActivity {
         vkladovCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Bank_percent.class);
+                Intent intent = new Intent(MainActivity.this, BankPercent.class);
                 startActivity(intent);
             }
         });
-    }
-
-    public void openSlojniyProcent(View v) {
-        Intent intent = new Intent(MainActivity.this, SlojniyProcent.class);
-        startActivity(intent);
-    }
-
-    public void openIpoteka(View v) {
-        Intent intent = new Intent(MainActivity.this, Ipoteka.class);
-        startActivity(intent);
-    }
-
-    public void openCredit(View v) {
-        Intent intent = new Intent(MainActivity.this, Credit.class);
-        startActivity(intent);
-    }
-
-    public void openPercent(View v) {
-        Intent intent = new Intent(MainActivity.this, Bank_percent.class);
-        startActivity(intent);
     }
 
 }

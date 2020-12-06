@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Bank_percent extends MyAppCompatActivity {
+public class BankPercent extends MyAppCompatActivity {
 
     final int HELP_TEXT = R.string.help_bank_percent;
     final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
@@ -18,7 +18,7 @@ public class Bank_percent extends MyAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Банковский процент</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Калькулятор вкладов</font>"));
         setContentView(R.layout.activity_bank_percent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();

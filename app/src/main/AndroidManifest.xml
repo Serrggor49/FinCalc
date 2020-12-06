@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Bank_percent"
+        <activity android:name=".BankPercent"
             android:screenOrientation="portrait" ></activity>
         <activity android:name=".Credit"
             android:screenOrientation="portrait" />
