@@ -1,7 +1,6 @@
 package com49.comments49.fincalc;
 
 import android.os.Bundle;
-import android.text.Html;
 
 import android.view.View;
 import android.widget.EditText;
@@ -10,9 +9,11 @@ import android.widget.Toast;
 
 public class Ipoteka extends MyAppCompatActivity {
 
-    final int HELP_TEXT = R.string.help_ipoteka;
-    final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
-    final String INPUT_ERROR_VZNOS = "Первоначальный взнос не может превышать стоимость жилья";
+    private static final int HELP_TEXT = R.string.help_ipoteka;
+    private static final String BAR_TITLE = "Ипотечный калькулятор";
+    private static final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
+    private static final String INPUT_ERROR_VZNOS = "Первоначальный взнос не может превышать стоимость жилья";
+
     private EditText mStoimostJilyaEdit; // поле ввода первоначального вклада
     private EditText mPervonachalniyVznosEdit; // поле ввода процентной ставки
     private EditText mProcentnayaStavkaEdit;  // поле ввода продолжительности вклада
@@ -24,14 +25,15 @@ public class Ipoteka extends MyAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Ипотечный калькулятор</font>"));
         setContentView(R.layout.activity_ipoteka);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
-        separateTextView(mStoimostJilyaEdit);
-        separateTextView(mPervonachalniyVznosEdit);
         mStringHelp = HELP_TEXT;
         calculate(null);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(BAR_TITLE);
+        }
     }
 
     private void init() {
@@ -44,6 +46,10 @@ public class Ipoteka extends MyAppCompatActivity {
         mResultPereplata = findViewById(R.id.result_pereplat_editText_id);
         mStoimostJilyaEdit.setText(separate(mStoimostJilyaEdit.getText().toString()));
         mPervonachalniyVznosEdit.setText(separate(mPervonachalniyVznosEdit.getText().toString()));
+        separateTextView(mStoimostJilyaEdit, mResultEdit, mResultVsegoViplat, mResultPereplata);
+        separateTextView(mPervonachalniyVznosEdit, mResultEdit, mResultVsegoViplat, mResultPereplata);
+        separateTextView(mProcentnayaStavkaEdit, mResultEdit, mResultVsegoViplat, mResultPereplata);
+        separateTextView(mSrokEdit, mResultEdit, mResultVsegoViplat, mResultPereplata);
     }
 
     public void calculate(View view) {
@@ -60,8 +66,13 @@ public class Ipoteka extends MyAppCompatActivity {
             } else {
                 Double x = (stoimostJilya - pervonachalniyVznos) * ((procentnayaStavka * (Math.pow((1 + procentnayaStavka), srok)) / (Math.pow((1 + procentnayaStavka), srok) - 1)));  // ежемесячный платеж
                 mResultEdit.setText(" " + separate(String.format("%.2f", x)));
+                mResultEdit.setTextColor(getColor(R.color.green_graf));
                 mResultVsegoViplat.setText(" " + separate(String.format("%.2f", x * srok)));
-                mResultPereplata.setText(" " +separate(String.format("%.2f", x * srok - (stoimostJilya - pervonachalniyVznos))));
+                mResultVsegoViplat.setTextColor(getColor(R.color.green_graf));
+                mResultPereplata.setText(" " + separate(String.format("%.2f", x * srok - (stoimostJilya - pervonachalniyVznos))));
+                mResultPereplata.setTextColor(getColor(R.color.green_graf));
+
+
             }
 
         } catch (NumberFormatException e) {

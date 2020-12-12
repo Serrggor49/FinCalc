@@ -8,10 +8,14 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#000000"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <LinearLayout
@@ -25,7 +29,7 @@
                 android:id="@+id/slojniy_procent_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="18dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
@@ -36,7 +40,7 @@
                 android:id="@+id/ipotechniy_calc_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="18dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
@@ -55,7 +59,7 @@
                 android:id="@+id/kreditniy_calc_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="18dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"
@@ -66,7 +70,7 @@
                 android:id="@+id/vkladov_calc_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="18dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="#000000"

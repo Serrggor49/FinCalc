@@ -11,16 +11,19 @@ import android.widget.TextView;
 public class Info extends AppCompatActivity {
 
 
-    private TextView mTextView;
+    private static final String BAR_TITLE = "Справка";
     private static int text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Справка</font>"));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(BAR_TITLE);
+        }
     }
 
 
@@ -33,8 +36,8 @@ public class Info extends AppCompatActivity {
         return false;
     }
 
-    void init() {
-        mTextView = findViewById(R.id.result_editText_id);
+    private void init() {
+        TextView mTextView = findViewById(R.id.result_editText_id);
         mTextView.setText(text);
     }
 

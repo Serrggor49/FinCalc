@@ -2,7 +2,6 @@ package com49.comments49.fincalc;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,8 +13,10 @@ import java.util.ArrayList;
 
 public class SlojniyProcent extends MyAppCompatActivity {
 
-    final int HELP_TEXT = R.string.help_slojniy_procent;
-    final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
+    private static final int HELP_TEXT = R.string.help_slojniy_procent;
+    private static final String BAR_TITLE = "Сложный процент";
+    private static final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
+
     private EditText mVznosPervonachalniyEdit; // поле ввода первоначального вклада
     private EditText mStavkaProcentnayaEdit; // поле ввода процентной ставки
     private EditText mSrokEdit;  // поле ввода продолжительности вклада
@@ -28,14 +29,16 @@ public class SlojniyProcent extends MyAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Сложный процент</font>"));
         setContentView(R.layout.activity_slojniy_procent);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         init();
         setDesignGraf();
-        separateTextView(mVznosPervonachalniyEdit);
         mStringHelp = HELP_TEXT;
         calculate(null);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(BAR_TITLE);
+        }
     }
 
     private void init() {
@@ -46,6 +49,12 @@ public class SlojniyProcent extends MyAppCompatActivity {
         mKolichestvoNachisleniyEdit = findViewById(R.id.kolichestvo_nachisleniy_editText_id);
         mResultTextView = findViewById(R.id.result_editText_id);
         mVznosPervonachalniyEdit.setText(separate(mVznosPervonachalniyEdit.getText().toString()));
+
+        separateTextView(mVznosPervonachalniyEdit, mResultTextView);
+        separateTextView(mStavkaProcentnayaEdit, mResultTextView);
+        separateTextView(mSrokEdit, mResultTextView);
+        separateTextView(mKolichestvoNachisleniyEdit, mResultTextView);
+
     }
 
     public void calculate(View view) {  // в данном методе вычисляем значение сложного процента
@@ -53,20 +62,21 @@ public class SlojniyProcent extends MyAppCompatActivity {
         try {
             double resultInvestnig;
             double pervonachalniyVznos = Double.parseDouble(mVznosPervonachalniyEdit.getText().toString().replace(" ", "")); // убираем пробелы-разделители, чтобы не выдало ошибку при преобразовании полученного значения в Double
-            double procentnayaStavka = Double.parseDouble(mStavkaProcentnayaEdit.getText().toString()) / 100;
-            double srok = Double.parseDouble(mSrokEdit.getText().toString());
-            double kolichestvoNachisleniy = Double.parseDouble(mKolichestvoNachisleniyEdit.getText().toString());   // количество начислений в году (если процент начисляют ежемесячно, то = 12)
+            double procentnayaStavka = Double.parseDouble(mStavkaProcentnayaEdit.getText().toString().replace(" ", "")) / 100;
+            double srok = Double.parseDouble(mSrokEdit.getText().toString().replace(" ", ""));
+            double kolichestvoNachisleniy = Double.parseDouble(mKolichestvoNachisleniyEdit.getText().toString().replace(" ", ""));   // количество начислений в году (если процент начисляют ежемесячно, то = 12)
 
             resultInvestnig = (pervonachalniyVznos * (Math.pow((1 + (procentnayaStavka / kolichestvoNachisleniy)), (kolichestvoNachisleniy * srok)))); // стоимость вклада по окончанию срока (сложный процент)
             String result_v = String.format("%.2f", resultInvestnig);
             mResultTextView.setText(separate(result_v));
+            mResultTextView.setTextColor(getColor(R.color.green_graf));
 
             for (int i = 0; i <= srok; i++) {  //  расчитываем стоимость вклада с шагом в один год, для построения графика
                 resultInvestnig = (pervonachalniyVznos * (Math.pow((1 + (procentnayaStavka / kolichestvoNachisleniy)), (kolichestvoNachisleniy * i))));
                 mArrayListDataPoint.add(new DataPoint(i, resultInvestnig));
             }
 
-            printGraph(0, srok, pervonachalniyVznos, resultInvestnig);
+            printGraph(srok, pervonachalniyVznos, resultInvestnig);
             mArrayListDataPoint.clear();
         } catch (NumberFormatException e) {
             Toast.makeText(this, INPUT_ERROR, Toast.LENGTH_LONG).show();
@@ -82,9 +92,9 @@ public class SlojniyProcent extends MyAppCompatActivity {
         mGraph.setCursorMode(true);
     }
 
-    private void printGraph(double minX, double maxX, double minY, double maxY) {
+    private void printGraph(double maxX, double minY, double maxY) {
         setDesignGraf();
-        mGraph.getViewport().setMinX(minX); // минимальное значение графика по оси X
+        mGraph.getViewport().setMinX(0); // минимальное значение графика по оси X
         mGraph.getViewport().setMaxX(maxX); // максимальное значение графика по оси X
         mGraph.getViewport().setMinY(minY); // минимальное значение графика по оси Y
         mGraph.getViewport().setMaxY(maxY); // максимальное значение графика по оси Y
@@ -93,5 +103,6 @@ public class SlojniyProcent extends MyAppCompatActivity {
         mGraph.removeAllSeries();
         mGraph.addSeries(mGraphSeries);
     }
+
 
 }

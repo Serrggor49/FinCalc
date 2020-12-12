@@ -9,8 +9,10 @@ import android.widget.Toast;
 
 public class Credit extends MyAppCompatActivity {
 
-    final int HELP_TEXT = R.string.help_credit;
-    final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
+    private static final int HELP_TEXT = R.string.help_credit;
+    private static final String BAR_TITLE = "Кредитный калькулятор";
+    private static final String INPUT_ERROR = "Убедитесь в правильности заполнения полей";
+
     private EditText mSummaKreditaEdit; // поле ввода суммы
     private EditText mProcentnayaStavkaEdit;  // поле ввода продолжительности вклада
     private EditText mSrokEdit;   // поле ввода периодичности выплаты процентов за год
@@ -22,13 +24,15 @@ public class Credit extends MyAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Кредитный калькулятор</font>"));
         setContentView(R.layout.activity_credit);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  // включает отображение стрелочки назад в тулбаре
         init();
-        separateTextView(mSummaKreditaEdit);
         mStringHelp = HELP_TEXT;
         calculate(null);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(BAR_TITLE);
+        }
     }
 
     private void init() {
@@ -39,6 +43,11 @@ public class Credit extends MyAppCompatActivity {
         mResultVsegoViplat = findViewById(R.id.result_vsego_viplat_editText_id);
         mResultPereplata = findViewById(R.id.result_pereplat_editText_id);
         mSummaKreditaEdit.setText(separate(mSummaKreditaEdit.getText().toString()));
+
+        separateTextView(mSummaKreditaEdit, mResultEdit, mResultVsegoViplat, mResultPereplata );
+        separateTextView(mProcentnayaStavkaEdit, mResultEdit, mResultVsegoViplat, mResultPereplata );
+        separateTextView(mSrokEdit, mResultEdit, mResultVsegoViplat, mResultPereplata );
+
     }
 
     public void calculate(View view) {
@@ -50,8 +59,11 @@ public class Credit extends MyAppCompatActivity {
 
             Double x = (summaKredita) * ((procentnayaStavka * (Math.pow((1 + procentnayaStavka), srok)) / (Math.pow((1 + procentnayaStavka), srok) - 1)));  // ежемесячный платеж
             mResultEdit.setText(" " + separate(String.format("%.2f", x)));
+            mResultEdit.setTextColor(getColor(R.color.green_graf));
             mResultVsegoViplat.setText(" " + separate(String.format("%.2f", x * srok)));
+            mResultVsegoViplat.setTextColor(getColor(R.color.green_graf));
             mResultPereplata.setText(" " + separate(String.format("%.2f", x * srok - (summaKredita))));
+            mResultPereplata.setTextColor(getColor(R.color.green_graf));
 
         } catch (NumberFormatException e) {
             Toast.makeText(this, INPUT_ERROR, Toast.LENGTH_LONG).show();
